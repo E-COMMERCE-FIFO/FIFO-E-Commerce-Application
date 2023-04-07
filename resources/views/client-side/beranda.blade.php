@@ -6,30 +6,30 @@
       <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
          <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active" style="background-image: url(assets/client-side/img/slide/slide-1.jpg)">
+            <div class="carousel-item active" style="background-image: url(assets/client-side/img/slide/first-banner-slide.jpg)">
                <div class="carousel-container">
                   <div class="carousel-content">
-                     <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Eterna</span></h2>
-                     <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                     <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+                     <h2 class="animate__animated animate__fadeInDown">Selamat Datang di Toko <span>Roket Mini Moto</span></h2>
+                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, error voluptatum molestiae perspiciatis at nisi minima voluptates, quos dolore perferendis autem sunt aliquam commodi voluptas consequuntur aspernatur, dolorum eaque!</p>
+                     <a href="" class="btn-get-started animate__animated animate__fadeInUp">Daftar</a>
                   </div>
                </div>
             </div>
-            <div class="carousel-item" style="background-image: url(assets/client-side/img/slide/slide-2.jpg)">
+            <div class="carousel-item" style="background-image: url(assets/client-side/img/slide/second-banner-slide.jpg)">
                <div class="carousel-container">
                   <div class="carousel-content">
-                     <h2 class="animate__animated fanimate__adeInDown">Lorem <span>Ipsum Dolor</span></h2>
-                     <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                     <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+                     <h2 class="animate__animated fanimate__adeInDown">Siap Melayani <span>Sepenuh Hati</span></h2>
+                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, error voluptatum molestiae perspiciatis at nisi minima voluptates, quos dolore perferendis autem sunt aliquam commodi voluptas consequuntur aspernatur, dolorum eaque!</p>
+                     <a href="" class="btn-get-started animate__animated animate__fadeInUp">Lihat Produk</a>
                   </div>
                </div>
             </div>
-            <div class="carousel-item" style="background-image: url(assets/client-side/img/slide/slide-3.jpg)">
+            <div class="carousel-item" style="background-image: url(assets/client-side/img/slide/third-banner-slide.jpg)">
                <div class="carousel-container">
                   <div class="carousel-content">
-                     <h2 class="animate__animated animate__fadeInDown">Sequi ea <span>Dime Lara</span></h2>
-                     <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                     <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+                     <h2 class="animate__animated animate__fadeInDown">Harga <span>Terjangkau</span> & Kualitas <span>Terjamin</span></h2>
+                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, error voluptatum molestiae perspiciatis at nisi minima voluptates, quos dolore perferendis autem sunt aliquam commodi voluptas consequuntur aspernatur, dolorum eaque!</p>
+                     <a href="" class="btn-get-started animate__animated animate__fadeInUp">Beli Sekarang</a>
                   </div>
                </div>
             </div>
