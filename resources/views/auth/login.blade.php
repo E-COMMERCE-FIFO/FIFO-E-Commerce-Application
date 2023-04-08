@@ -5,10 +5,13 @@
     <form method="POST" action="{{ route('login') }}" autocomplete="off">
         @csrf
 
+        <h1 class="text-center mb-6" style="font-size: 30px; font-weight: 500; ">LOGIN ROKET MINI MOTO</h1>
+        <img src="{{ url('assets/undraw_joyride_re_968t.svg') }}" alt="Undraw Images SVG" style="border-radius: 50%; width: 28%; margin: auto;">
+
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-label for="email" class="mt-6" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full hellos" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -19,7 +22,7 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>

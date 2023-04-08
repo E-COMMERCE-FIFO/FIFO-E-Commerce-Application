@@ -2,17 +2,19 @@
     <form method="POST" action="{{ route('register') }}" autocomplete="off">
         @csrf
 
+        <h1 class="text-center mb-6" style="font-size: 28px; font-weight: 500; ">DAFTAR ROKET MINI MOTO</h1>
+        <img src="{{ url('assets/undraw_join_re_w1lh.svg') }}" alt="Undraw Images SVG" style="border-radius: 50%; width: 28%; margin: auto;">
         <!-- Name -->
-        <div>
+        <div class="mt-6">
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -23,7 +25,7 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="new-password" />
+                            required />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -34,7 +36,7 @@
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation" required />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
