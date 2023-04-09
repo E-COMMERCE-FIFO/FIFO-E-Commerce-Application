@@ -6,7 +6,7 @@
         @csrf
 
         <h1 class="text-center mb-6" style="font-size: 30px; font-weight: 500;">LOGIN ROKET MINI MOTO</h1>
-        <img src="{{ url('assets/undraw_coding_re_iv62.svg') }}" alt="Undraw Images SVG" style="border-radius: 50%; width: 50%; margin: auto;">
+        <img src="{{ url('assets/server-side/img/auth/undraw_coding_re_iv62.svg') }}" alt="Undraw Images SVG" style="border-radius: 50%; width: 50%; margin: auto;">
 
         <!-- Email Address -->
         <div>

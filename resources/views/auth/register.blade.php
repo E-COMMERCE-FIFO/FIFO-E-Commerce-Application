@@ -3,7 +3,7 @@
         @csrf
 
         <h1 class="text-center mb-6" style="font-size: 28px; font-weight: 500; ">DAFTAR ROKET MINI MOTO</h1>
-        <img src="{{ url('assets/undraw_dev_focus_re_6iwt.svg') }}" alt="Undraw Images SVG" style="border-radius: 20%; width: 40%; margin: auto;">
+        <img src="{{ url('assets/server-side/img/auth/undraw_dev_focus_re_6iwt.svg') }}" alt="Undraw Images SVG" style="border-radius: 20%; width: 40%; margin: auto;">
         <!-- Name -->
         <div class="mt-6">
             <x-input-label for="name" :value="__('Name')" />

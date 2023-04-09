@@ -1,4 +1,4 @@
-@extends('client-side.layouts.main')
+@extends('client-side.layouts.main-client')
 @section('title', 'Beranda')
 @section('main-content')
 <section id="hero">
