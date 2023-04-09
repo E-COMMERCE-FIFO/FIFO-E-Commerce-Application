@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta name="description" content="E-Commerce Trail Mini">
-   <meta name="keywords" content="E-Commerce Trail Mini">
+   <meta name="description" content="Toko Roket Mini Moto">
+   <meta name="keywords" content="Toko Roket Mini Moto">
    <meta name="author" content="Diana Fithri Lestari">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -134,10 +134,10 @@
       </div>
       <div class="container">
          <div class="copyright">
-            Copyright &copy; 2023 <strong>Diana Fithri Lestari</strong>. All Rights Reserved
+            Copyright &copy; 2023 <strong>Toko Roket Mini Moto</strong>. All Rights Reserved
          </div>
          <div class="credits">
-            Created by Diana Fithri Lestari</a>
+            Created by Diana Fithri Lestari
          </div>
       </div>
    </footer>
