@@ -42,5 +42,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/index',[SupplierController::class, 'index']);
 Route::get('/create',[SupplierController::class, 'create']);
-Route::post('/add',[SupplierController::class, 'add']);
+Route::post('/add',[SupplierController::class, 'store']);
+Route::get('/{id}/edit', [SupplierController::class, 'edit']);
+Route::put('/{id}', [SupplierController::class, 'update']);
+Route::delete('/{id}', [SupplierController::class, 'destroy']);
 require __DIR__.'/auth.php';
