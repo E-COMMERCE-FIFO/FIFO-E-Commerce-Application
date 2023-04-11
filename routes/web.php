@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Client\LandingController;
+use App\Http\Controllers\Server\SupplierController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Server\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/index',[SupplierController::class, 'index']);
+Route::get('/create',[SupplierController::class, 'create']);
+Route::post('/add',[SupplierController::class, 'add']);
 require __DIR__.'/auth.php';
