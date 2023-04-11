@@ -5,6 +5,7 @@ namespace App\Http\Controllers\server;
 use App\Http\Controllers\Controller;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {
@@ -15,6 +16,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        
         $number = 1;
         $supplier = Supplier::all();
         return view('server-side.supplier.index', compact(['supplier', 'number']));
@@ -27,7 +29,22 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('server-side.supplier.create');
+       $supplier = Supplier::all();
+       $q = DB::table('supplier')->select(DB::raw('MAX(RIGHT(id_supplier,2))as kode'));
+       $kd="";
+        if ($q->count()>0)
+        {
+            foreach($q->get() as $k)
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%02s", $tmp);
+            }
+        }
+        else
+        {
+            $kd = "01";
+        }
+        return view('server-side.supplier.create', compact('supplier', 'kd'));
     }
 
     /**
