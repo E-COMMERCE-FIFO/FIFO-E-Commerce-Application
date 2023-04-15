@@ -20,14 +20,14 @@
                <div class="col-xxl-4 col-md-6">
                   <div class="card info-card sales-card">
                      <div class="card-body">
-                        <h5 class="card-title">Supplier <span>| Perhitungan Data</span></h5>
+                        <h5 class="card-title">Pengguna <span>| total pengguna</span></h5>
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                              <i class="bi bi-cart"></i>
+                              <i class="bi bi-people"></i>
                            </div>
                            <div class="ps-3">
                               <h6>145</h6>
-                              <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                              <span class="text-primary small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
                            </div>
                         </div>
                      </div>
@@ -37,7 +37,7 @@
                <div class="col-xxl-4 col-md-6">
                   <div class="card info-card revenue-card">
                      <div class="card-body">
-                        <h5 class="card-title">Barang <span>| Perhitungan Data</span></h5>
+                        <h5 class="card-title">Supplier <span>| total supplier</span></h5>
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                               <i class="bi bi-currency-dollar"></i>
@@ -54,7 +54,7 @@
                <div class="col-xxl-4 col-xl-6">
                   <div class="card info-card customers-card">
                      <div class="card-body">
-                        <h5 class="card-title">Administrator <span>| Perhitungan Data</span></h5>
+                        <h5 class="card-title">Merek Barang <span>| total merek</span></h5>
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                               <i class="bi bi-people"></i>
@@ -71,7 +71,41 @@
                <div class="col-xxl-4 col-xl-6">
                   <div class="card info-card customers-card">
                      <div class="card-body">
-                        <h5 class="card-title">Pelanggan <span>| Perhitungan Data</span></h5>
+                        <h5 class="card-title">Barang <span>| total barang</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <i class="bi bi-lock"></i>
+                           </div>
+                           <div class="ps-3">
+                              <h6>1244</h6>
+                              <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-xxl-4 col-xl-6">
+                  <div class="card info-card customers-card">
+                     <div class="card-body">
+                        <h5 class="card-title">Pembelian <span>| total pembelian</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <i class="bi bi-lock"></i>
+                           </div>
+                           <div class="ps-3">
+                              <h6>1244</h6>
+                              <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-xxl-4 col-xl-6">
+                  <div class="card info-card customers-card">
+                     <div class="card-body">
+                        <h5 class="card-title">Penjualan <span>| total penjualan</span></h5>
                         <div class="d-flex align-items-center">
                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                               <i class="bi bi-lock"></i>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\server;
+namespace App\Http\Controllers\Server;
 
 use App\Models\Supplier;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,6 @@ class SupplierController extends Controller
         $number = 1;
         $supplier = Supplier::all();
         return view('server-side.supplier.index', compact(['supplier', 'number']));
-
     }
     
     public function create()
