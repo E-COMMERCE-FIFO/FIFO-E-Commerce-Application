@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Server\SupplierController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Server\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,12 @@ Route::get('/beranda', [LandingController::class, 'index']);
 // ! ROUTE SERVER SIDE
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+// ? PREVIEW DATATABLES
+Route::get('/datatables', [DashboardController::class, 'datatables']);
+
+// ? PREVIEW FORM
+Route::get('/form', [DashboardController::class, 'form']);
+
 // ! ROUTE BREEZE AUTHENTICATION
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -40,7 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/index',[SupplierController::class, 'index']);
-Route::get('/create',[SupplierController::class, 'create']);
-Route::post('/add',[SupplierController::class, 'add']);
-require __DIR__.'/auth.php';
+Route::get('/index', [SupplierController::class, 'index']);
+Route::get('/create', [SupplierController::class, 'create']);
+Route::post('/add', [SupplierController::class, 'store']);
+Route::get('/{id}/edit', [SupplierController::class, 'edit']);
+Route::put('/{id}', [SupplierController::class, 'update']);
+Route::delete('/{id}', [SupplierController::class, 'destroy']);
+require __DIR__ . '/auth.php';

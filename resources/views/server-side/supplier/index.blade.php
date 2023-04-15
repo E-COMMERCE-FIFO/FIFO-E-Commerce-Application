@@ -18,12 +18,12 @@
    <td>{{ $supplier -> alamat }}</td>
    <td>{{ $supplier -> no_telp }}</td>
    <td>
-    <a href="{{ $supplier -> id_supplier }}/edit">Edit</a>
-    <form action="{{ $supplier -> id_supplier }}" method="post">
-        @csrf
-        @method('delete')
-        <input type="submit" value="Delete">
-    </form>
+    <a href="{{ url ($supplier->id_supplier. '/edit') }}">Edit</a>
+   <form action="{{ $supplier -> id_supplier }}" method="POST">
+    @csrf
+    @method('delete')
+    <input type="submit" value="delete">
+</form>
    </td>
 </tr>    
 @endforeach
