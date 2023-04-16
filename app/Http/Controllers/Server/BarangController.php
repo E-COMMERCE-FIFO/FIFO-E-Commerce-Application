@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
 {
@@ -16,7 +17,9 @@ class BarangController extends Controller
      */
     public function index()
     {
-        //
+        $barang = Barang::all();
+        $numb = 1;
+        return view('server-side.barang.index', compact(['barang', 'numb']));
     }
 
     /**
@@ -26,7 +29,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('server-side.barang.create');
     }
 
     /**
@@ -37,7 +40,9 @@ class BarangController extends Controller
      */
     public function store(StoreBarangRequest $request)
     {
-        //
+        $data = $request->all();
+        Barang::create($data);
+        return Redirect::route('barang-activity.index')->with('message', 'Barang berhasil ditambahkan.');
     }
 
     /**

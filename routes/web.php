@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Client\LandingController;
+use App\Http\Controllers\Server\BarangController;
 use App\Http\Controllers\Server\SupplierController;
 use App\Http\Controllers\Server\DashboardController;
 
@@ -26,9 +27,11 @@ Route::get('/', function () {
 // ! ROUTE CLIENT SIDE
 Route::get('/beranda', [LandingController::class, 'index']);
 
-
 // ! ROUTE SERVER SIDE
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::resource('/barang-activity', BarangController::class)->parameters([
+    'barang-activity' => 'barang_id'
+]);
 
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);

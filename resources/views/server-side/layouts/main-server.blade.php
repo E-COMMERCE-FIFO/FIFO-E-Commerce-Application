@@ -200,14 +200,14 @@
             <a class="nav-link collapsed" data-bs-target="#barang-nav" data-bs-toggle="collapse" href="#">
                <i class="bi bi-boxes"></i><span>Barang</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="barang-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="barang-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('barang-activity.index') }}">
                      <i class="bi bi-circle"></i><span>Data Barang</span>
                   </a>
                </li>
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('barang-activity.create') }}">
                      <i class="bi bi-circle"></i><span>Tambah Barang</span>
                   </a>
                </li>
