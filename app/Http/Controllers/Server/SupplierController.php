@@ -16,10 +16,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        
-        $number = 1;
         $supplier = Supplier::all();
-        return view('server-side.supplier.index', compact(['supplier', 'number']));
+        return view('server-side.supplier.index', compact('supplier'));
     }
 
     /**
@@ -29,22 +27,8 @@ class SupplierController extends Controller
      */
     public function create()
     {
-       $supplier = Supplier::all();
-       $q = DB::table('supplier')->select(DB::raw('MAX(RIGHT(id_supplier,2))as kode'));
-       $kd="";
-        if ($q->count()>0)
-        {
-            foreach($q->get() as $k)
-            {
-                $tmp = ((int)$k->kode)+1;
-                $kd = sprintf("%02s", $tmp);
-            }
-        }
-        else
-        {
-            $kd = "01";
-        }
-        return view('server-side.supplier.create', compact('supplier', 'kd'));
+        $supplier = Supplier::all();
+        return view('server-side.supplier.create', compact('supplier'));
     }
 
     /**
@@ -55,8 +39,10 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        Supplier::create($request->except('_token', 'submit'));
-        return redirect('index');
+
+        $maxId = Supplier::max('id') + 1;
+        Supplier::create(array_merge($request->except(['_token', 'submit']),['id' => $maxId]));
+        return redirect('supplier');
     }
 
     /**
@@ -93,7 +79,7 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         $supplier->update($request->except('_token', 'submit'));
-         return redirect ('index');
+         return redirect ('supplier');
     }
 
     /**
@@ -106,6 +92,6 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         $supplier->delete();
-        return redirect ('index');
+        return redirect ('supplier');
     }
 }

@@ -168,12 +168,12 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ url('supplier') }}">
                      <i class="bi bi-circle"></i><span>Data Supplier</span>
                   </a>
                </li>
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ url('createsupplier') }}">
                      <i class="bi bi-circle"></i><span>Tambah Supplier</span>
                   </a>
                </li>

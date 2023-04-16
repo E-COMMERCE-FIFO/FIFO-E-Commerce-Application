@@ -27,11 +27,18 @@ Route::get('/', function () {
 // ! ROUTE CLIENT SIDE
 Route::get('/beranda', [LandingController::class, 'index']);
 
+
 // ! ROUTE SERVER SIDE
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('/barang-activity', BarangController::class)->parameters([
     'barang-activity' => 'barang_id'
 ]);
+Route::get('/supplier', [SupplierController::class, 'index']);
+Route::get('/createsupplier', [SupplierController::class, 'create']);
+Route::post('/add', [SupplierController::class, 'store']);
+Route::get('/{id}/edit', [SupplierController::class, 'edit']);
+Route::put('/{id}', [SupplierController::class, 'update']);
+Route::delete('/{id}', [SupplierController::class, 'destroy']);
 
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
@@ -50,10 +57,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/index', [SupplierController::class, 'index']);
-Route::get('/create', [SupplierController::class, 'create']);
-Route::post('/add', [SupplierController::class, 'store']);
-Route::get('/{id}/edit', [SupplierController::class, 'edit']);
-Route::put('/{id}', [SupplierController::class, 'update']);
-Route::delete('/{id}', [SupplierController::class, 'destroy']);
+
 require __DIR__ . '/auth.php';
