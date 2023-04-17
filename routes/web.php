@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Server\BarangController;
 use App\Http\Controllers\Server\SupplierController;
 use App\Http\Controllers\Server\DashboardController;
+use App\Http\Controllers\Server\PembelianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,8 @@ Route::get('/beranda', [LandingController::class, 'index']);
 
 // ! ROUTE SERVER SIDE
 Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::resource('/barang-activity', BarangController::class)->parameters([
-    'barang-activity' => 'barang'
-]);
+Route::resource('/barang-activity', BarangController::class)->parameters(['barang-activity' => 'barang']);
+Route::resource('/pembelian-activity', PembelianController::class)->parameters(['pembelian-activity' => 'pembelian']);
 
 Route::get('/supplier', [SupplierController::class, 'index']);
 Route::get('/createsupplier', [SupplierController::class, 'create']);

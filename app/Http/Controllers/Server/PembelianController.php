@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pembelian;
 use App\Http\Requests\StorePembelianRequest;
 use App\Http\Requests\UpdatePembelianRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class PembelianController extends Controller
 {
@@ -16,7 +17,9 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        //
+        $pembelian = Pembelian::join('users', 'pembelian.user_id', '=', 'users.id')->select('*')->get();
+        $numb = 1;
+        return view('server-side.pembelian.index', compact('pembelian', 'numb'));
     }
 
     /**
@@ -26,7 +29,7 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        //
+        return view('server-side.pembelian.create');
     }
 
     /**
@@ -37,7 +40,9 @@ class PembelianController extends Controller
      */
     public function store(StorePembelianRequest $request)
     {
-        //
+        $data = $request->all();
+        Pembelian::create($data);
+        return Redirect::route('pembelian-activity.index')->with('message', 'Berhasil menambah pembelian.');
     }
 
     /**

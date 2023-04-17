@@ -219,7 +219,7 @@
             </a>
             <ul id="transaksi-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('pembelian-activity.index') }}">
                      <i class="bi bi-circle"></i><span>Pembelian</span>
                   </a>
                </li>
