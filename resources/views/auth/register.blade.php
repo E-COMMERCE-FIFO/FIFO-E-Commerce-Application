@@ -6,9 +6,9 @@
         <img src="{{ url('assets/server-side/img/auth/undraw_dev_focus_re_6iwt.svg') }}" alt="Undraw Images SVG" style="border-radius: 20%; width: 40%; margin: auto;">
         <!-- Name -->
         <div class="mt-6">
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
+            <x-text-input id="nama_lengkap" class="block mt-1 w-full" type="text" name="nama_lengkap" :value="old('nama_lengkap')" required autofocus />
+            <x-input-error :messages="$errors->get('nama_lengkap')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -39,6 +39,18 @@
                             name="password_confirmation" required />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            </div>
+
+        <div class="mt-6">
+            <x-input-label for="no_telp" :value="__('No Telepon')" />
+            <x-text-input id="no_telp" class="block mt-1 w-full" type="text" name="no_telp" :value="old('no_telp')" required/>
+            <x-input-error :messages="$errors->get('no_telp')" class="mt-2" />
+        </div>
+
+        <div class="mt-6">
+            <x-input-label for="role" />
+            <x-text-input id="role" class="block mt-1 w-full" type="hidden" name="role" value="Customer"/>
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
