@@ -29,7 +29,7 @@ Route::get('/beranda', [LandingController::class, 'index']);
 // ! ROUTE SERVER SIDE
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('/barang-activity', BarangController::class)->parameters([
-    'barang-activity' => 'barang_id'
+    'barang-activity' => 'barang'
 ]);
 
 Route::get('/supplier', [SupplierController::class, 'index']);

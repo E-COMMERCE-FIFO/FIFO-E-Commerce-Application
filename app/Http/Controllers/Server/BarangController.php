@@ -64,7 +64,7 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang)
     {
-        //
+        return view('server-side.barang.edit', compact('barang'));
     }
 
     /**
@@ -76,7 +76,9 @@ class BarangController extends Controller
      */
     public function update(UpdateBarangRequest $request, Barang $barang)
     {
-        //
+        $data = $request->all();
+        Barang::find($barang->id)->update($data);
+        return Redirect::route('barang-activity.index')->with('message', 'Data berhasil di-update.');
     }
 
     /**
@@ -87,6 +89,7 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
-        //
+        Barang::find($barang->id)->delete();
+        return Redirect::route('barang-activity.index')->with('message', 'Data berhasil dihapus.');
     }
 }

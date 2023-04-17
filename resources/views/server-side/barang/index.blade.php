@@ -19,7 +19,14 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Data Barang</h5>
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-between align-items-center">
+                  <h5 class="card-title">Data Barang</h5>
+                  <a href="{{ route('barang-activity.create') }}">
+                    <button class="btn btn-success btn-sm">Tambah Barang</button>
+                  </a>
+                </div>
+              </div>
               @if (Session::has('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                   <i class="bi bi-check-circle me-1"></i> {{ Session::get('message') }}
@@ -43,7 +50,7 @@
                       <td>{{ $item->nama_barang }}</td>
                       <td>{{ $item->stok }}</td>
                       <td>
-                        <form action="{{ route('barang-activity.destroy', $item->id) }}">
+                        <form action="{{ route('barang-activity.destroy', $item->id) }}" method="post">
                           @csrf
                           @method('delete')
                           <a href="{{ route('barang-activity.edit', $item->id) }}" class="badge bg-warning text-white">edit</a>
