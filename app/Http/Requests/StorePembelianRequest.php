@@ -13,7 +13,7 @@ class StorePembelianRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StorePembelianRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'tgl_pembelian' => 'required'
+        ];
+    }
+
+    public function messages() 
+    {
+        return [
+            'tgl_pembelian.required' => 'Tanggal pembelian harus diisi!'
         ];
     }
 }
