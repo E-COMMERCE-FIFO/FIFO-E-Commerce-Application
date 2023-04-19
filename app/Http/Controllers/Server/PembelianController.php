@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Server;
 
 use App\Http\Controllers\Controller;
+use App\Models\Barang;
 use App\Models\Pembelian;
+use App\Models\Supplier;
 use App\Http\Requests\StorePembelianRequest;
 use App\Http\Requests\UpdatePembelianRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class PembelianController extends Controller
@@ -17,7 +20,7 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $pembelian = Pembelian::join('users', 'pembelian.user_id', '=', 'users.id')->select('*')->get();
+        $pembelian = Pembelian::join('users', 'pembelian.user_id', '=', 'users.id')->select('*')->orderBy('tgl_pembelian', 'desc')->get();
         $numb = 1;
         return view('server-side.pembelian.index', compact('pembelian', 'numb'));
     }
@@ -29,7 +32,8 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        return view('server-side.pembelian.create');
+        $pembelianId = Pembelian::PembelianId();
+        return view('server-side.pembelian.create', compact('pembelianId'));
     }
 
     /**
@@ -42,7 +46,22 @@ class PembelianController extends Controller
     {
         $data = $request->all();
         Pembelian::create($data);
-        return Redirect::route('pembelian-activity.index')->with('message', 'Berhasil menambah pembelian.');
+        $barang = Barang::all();
+        $supplier = Supplier::all();
+        $pjawab = DB::table('users')->select('nama_lengkap')->where('id', $data['user_id'])->first();
+        return view('server-side.pembelian.create-detail', compact('data', 'barang', 'supplier', 'pjawab'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StorePembelianRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function senddetail(StorePembelianRequest $request)
+    {
+        $data = $request->all();
+        dd($data);
     }
 
     /**
