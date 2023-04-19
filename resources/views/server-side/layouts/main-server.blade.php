@@ -126,7 +126,7 @@
                   </li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
-                     <a class="dropdown-item d-flex align-items-center" href="#">
+                     <a class="dropdown-item d-flex align-items-center" href="{{ url('logout') }}">
                         <i class="bi bi-box-arrow-right"></i><span>Sign Out</span>
                      </a>
                   </li>
@@ -250,7 +250,7 @@
          </li>
          <li class="nav-heading mb-2 mt-4">Lain-lain</li>
          <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ url('dashboard') }}">
+            <a class="nav-link collapsed" href=" {{ url('logout') }}">
                <i class="bi bi-sign-turn-slight-right"></i>
                <span>Keluar</span>
             </a>
