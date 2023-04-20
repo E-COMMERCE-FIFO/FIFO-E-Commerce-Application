@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Server;
 
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
+use App\Models\DetailPembelian;
 use App\Models\Pembelian;
 use App\Models\Supplier;
 use App\Http\Requests\StorePembelianRequest;
@@ -32,9 +33,10 @@ class PembelianController extends Controller
      */
     public function create()
     {
+        $pembelianId = Pembelian::IdPembelian();
         $barang = Barang::all();
         $supplier = Supplier::all();
-        return view('server-side.pembelian.create', compact('barang', 'supplier'));
+        return view('server-side.pembelian.create', compact('barang', 'supplier', 'pembelianId'));
     }
 
     /**
@@ -46,7 +48,20 @@ class PembelianController extends Controller
     public function store(StorePembelianRequest $request)
     {
         $data = $request->all();
-        dd($data);
+        $refreshstok = Barang::find($data['id_barang'])->stok + $data['jumlah_pembelian'];
+        Pembelian::create([
+            'id' => $data['id_pembelian'],
+            'tgl_pembelian' => $data['tgl_pembelian'],
+            'user_id' => $data['user_id']
+        ]);
+        DetailPembelian::create([
+            'id_pembelian' => $data['id_pembelian'],
+            'id_barang' => $data['id_barang'],
+            'harga_beli' => $data['harga_beli'],
+            'harga_jual' => $data['harga_jual'],
+            'id_supplier' => $data['id_supplier']
+        ]);
+        Barang::find($data['id_barang'])->update(['stok' => $refreshstok]);
     }
 
     /**

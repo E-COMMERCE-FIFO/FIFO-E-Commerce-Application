@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function pembelian() {
-        return $this->hasMany(Pembelian::class, 'id', 'user_id');
+        return $this->hasMany(Pembelian::class);
     }
 }

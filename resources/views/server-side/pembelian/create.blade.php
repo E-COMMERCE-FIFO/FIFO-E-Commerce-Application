@@ -22,6 +22,7 @@
                       <!-- Vertical Form -->
                       <form class="row g-3" action="{{ route('pembelian-activity.store') }}" method="post" autocomplete="off">
                         @csrf
+                          <input type="hidden" name="id_pembelian" value="{{ $pembelianId }}">
                           <div class="col-md-6">
                               <label for="tglBeli" class="form-label">*Tanggal Pembelian</label>
                               <input

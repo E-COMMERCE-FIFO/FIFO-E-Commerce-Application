@@ -26,7 +26,7 @@
       <div class="d-flex align-items-center justify-content-between">
          <a href{{ url('dashboard') }}" class="logo d-flex align-items-center">
             <img src="{{ url('assets/server-side/img/logo.png') }}" alt="">
-            <span class="d-none d-lg-block">NiceAdmin</span>
+            <span class="d-none d-lg-block">R.MiniMoto</span>
          </a>
          <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>

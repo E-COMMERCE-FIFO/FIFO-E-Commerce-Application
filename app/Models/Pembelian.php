@@ -13,6 +13,10 @@ class Pembelian extends Model
     protected $fillable = ['id', 'tgl_pembelian', 'user_id'];
 
     public function user() {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
+    }
+
+    public function scopeIdPembelian() {
+        return $this->max('id') + 1;
     }
 }
