@@ -61,9 +61,10 @@
                               </strong>
                             @enderror
                           </div>
+                          <div id="first-barang"></div>
                           <div class="col-md-6">
                             <label for="id_barang" class="form-label">*Barang</label>
-                            <select name="id_barang" id="id_barang" class="form-select">
+                            <select name="id_barang[]" id="id_barang" class="form-select">
                               <option value="" id="barangtest">~ pilih barang ~</option>
                               @forelse ($barang as $itemB)
                                 <option value="{{ $itemB['id'] }}">{{ $itemB['nama_barang'] }}</option>
@@ -86,7 +87,7 @@
                                   type="number"
                                   class="form-control"
                                   id="jlmBeli"
-                                  name="jumlah_pembelian"
+                                  name="jumlah_pembelian[]"
                               />
                               @error('jumlah_pembelian')
                                 <strong class="fw-bold d-block text-danger mt-2">
@@ -100,7 +101,7 @@
                                   type="number"
                                   class="form-control"
                                   id="hargaBeli"
-                                  name="harga_beli"
+                                  name="harga_beli[]"
                               />
                               @error('harga_beli')
                                 <strong class="fw-bold d-block text-danger mt-2">
@@ -114,7 +115,7 @@
                                   type="number"
                                   class="form-control"
                                   id="hargaJual"
-                                  name="harga_jual"
+                                  name="harga_jual[]"
                               />
                               @error('harga_jual')
                                 <strong class="fw-bold d-block text-danger mt-2">
@@ -124,7 +125,7 @@
                           </div>
                           <div class="col-md-12">
                             <label for="id_supplier" class="form-label">*Supplier</label>
-                            <select name="id_supplier" id="id_supplier" class="form-select">
+                            <select name="id_supplier[]" id="id_supplier" class="form-select">
                               <option value="" id="suppliertest">~ pilih supplier ~</option>
                               @forelse ($supplier as $itemS)
                                 <option value="{{ $itemS['id'] }}">{{ $itemS['nama_supplier'] }}</option>
@@ -141,13 +142,14 @@
                               </strong>
                             @enderror
                           </div>
+                          <div id="box-add-form"></div>
                           <div class="col-md-10 mt-4">
                               <button type="submit" class="btn btn-success w-100">
                                   Simpan Data Pembelian
                               </button>
                           </div>
                           <div class="col-md-2 mt-4">
-                              <button id="addBarang" type="button" class="btn btn-primary w-100">
+                              <button id="add-barang" type="button" class="btn btn-primary w-100">
                                   Tambah Barang
                               </button>
                           </div>
@@ -160,4 +162,98 @@
   </section>
 </main>
 <!-- End #main -->
+<script>
+  let formNumber = 2;
+  const addBarangButton = document.getElementById('add-barang');
+  const formWrapper = document.getElementById('box-add-form');
+  const firstInput = document.getElementById('first-barang');
+  const addFirstInput = document.createElement('div');
+  const newBoxForm = document.createElement('div');
+  addFirstInput.innerHTML = `<h5 class="card-title">Barang 1</h5>`;
+  newBoxForm.classList.add('row');
+
+  addBarangButton.addEventListener('click', () => {
+    firstInput.appendChild(addFirstInput);
+    newBoxForm.innerHTML += `
+      <div class='col-md-12 mt-3'>
+        <h5 class="card-title">Barang ${formNumber++}</h5>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="id_barang" class="form-label">*Barang</label>
+        <select name="id_barang[]" id="id_barang" class="form-select">
+          <option value="" id="barangtest">~ pilih barang ~</option>
+          @forelse ($barang as $itemB)
+            <option value="{{ $itemB['id'] }}">{{ $itemB['nama_barang'] }}</option>
+          @empty
+            <option value="">~ belum ada data barang ~</option>
+          @endforelse
+        </select>
+        @error('id_barang')
+          <strong class="fw-bold d-block text-danger mt-2">
+            <small>&nbsp;* {{ $message }}</small>
+          </strong>
+        @enderror
+      </div>
+      <div class="col-md-6 mb-3">
+          <label for="jlmBeli" class="form-label">*Jumlah Pembelian</label>
+          <input
+              type="number"
+              class="form-control"
+              id="jlmBeli"
+              name="jumlah_pembelian[]"
+          />
+          @error('jumlah_pembelian')
+            <strong class="fw-bold d-block text-danger mt-2">
+              <small>&nbsp;* {{ $message }}</small>
+            </strong>
+          @enderror
+      </div>
+      <div class="col-md-6 mb-3">
+          <label for="hargaBeli" class="form-label">*Harga Beli</label>
+          <input
+              type="number"
+              class="form-control"
+              id="hargaBeli"
+              name="harga_beli[]"
+          />
+          @error('harga_beli')
+            <strong class="fw-bold d-block text-danger mt-2">
+              <small>&nbsp;* {{ $message }}</small>
+            </strong>
+          @enderror
+      </div>
+      <div class="col-md-6 mb-3">
+          <label for="hargaJual" class="form-label">*Harga Jual</label>
+          <input
+              type="number"
+              class="form-control"
+              id="hargaJual"
+              name="harga_jual[]"
+          />
+          @error('harga_jual')
+            <strong class="fw-bold d-block text-danger mt-2">
+              <small>&nbsp;* {{ $message }}</small>
+            </strong>
+          @enderror
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="id_supplier" class="form-label">*Supplier</label>
+        <select name="id_supplier[]" id="id_supplier" class="form-select">
+          <option value="" id="suppliertest">~ pilih supplier ~</option>
+          @forelse ($supplier as $itemS)
+            <option value="{{ $itemS['id'] }}">{{ $itemS['nama_supplier'] }}</option>
+          @empty
+            <option value="">~ belum ada data supplier ~</option>
+          @endforelse
+        </select>
+        @error('id_supplier')
+          <strong class="fw-bold d-block text-danger mt-2">
+            <small>&nbsp;* {{ $message }}</small>
+          </strong>
+        @enderror
+      </div>
+    `;
+    formWrapper.appendChild(newBoxForm);
+  });
+</script>
 @endsection
