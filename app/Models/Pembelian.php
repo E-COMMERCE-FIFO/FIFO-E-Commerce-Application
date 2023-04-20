@@ -15,8 +15,4 @@ class Pembelian extends Model
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
-    public function scopePembelianId() {
-        return $this->max('id') + 1;
-    }
 }

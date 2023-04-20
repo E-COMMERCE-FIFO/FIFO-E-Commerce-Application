@@ -32,8 +32,6 @@ Route::get('/beranda', [LandingController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('/barang-activity', BarangController::class)->parameters(['barang-activity' => 'barang']);
 Route::resource('/pembelian-activity', PembelianController::class)->parameters(['pembelian-activity' => 'pembelian']);
-Route::get('/input-detail-pembelian', fn () => view('server-side.pembelian.create-detail'))->name('pembelian-activity.detail');
-Route::post('/kirim', [DetailTrxController::class, 'store']);
 
 Route::get('/supplier', [SupplierController::class, 'index']);
 Route::get('/createsupplier', [SupplierController::class, 'create']);

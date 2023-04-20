@@ -32,8 +32,9 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        $pembelianId = Pembelian::PembelianId();
-        return view('server-side.pembelian.create', compact('pembelianId'));
+        $barang = Barang::all();
+        $supplier = Supplier::all();
+        return view('server-side.pembelian.create', compact('barang', 'supplier'));
     }
 
     /**
@@ -46,22 +47,6 @@ class PembelianController extends Controller
     {
         $data = $request->all();
         Pembelian::create($data);
-        $barang = Barang::all();
-        $supplier = Supplier::all();
-        $pjawab = DB::table('users')->select('nama_lengkap')->where('id', $data['user_id'])->first();
-        return view('server-side.pembelian.create-detail', compact('data', 'barang', 'supplier', 'pjawab'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePembelianRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function senddetail(StorePembelianRequest $request)
-    {
-        $data = $request->all();
-        dd($data);
     }
 
     /**

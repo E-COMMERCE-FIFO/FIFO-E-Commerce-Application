@@ -47,6 +47,7 @@
                                   class="form-control"
                                   id="inputEmail4"
                                   name="stok"
+                                  value="0"
                               />
                               @error('stok')
                                 <strong class="fw-bold d-block text-danger mt-2">

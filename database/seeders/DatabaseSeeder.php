@@ -25,35 +25,35 @@ class DatabaseSeeder extends Seeder
         // ]);
       
         DB::table('supplier')->insert([
-            
             [
-                'nama_supplier' => 'Ahmad Wildan',
+                'nama_supplier' => 'PT. Makmur Jaya',
                 'alamat' => 'Bondowoso',
+                'no_telp' => '082887186352'
+            ],
+            [
+                'nama_supplier' => 'PT. Mandala Cross',
+                'alamat' => 'Jakarta',
                 'no_telp' => '083848139012'
             ],
-
             [
-                'nama_supplier' => 'Farul Ahmad Wananda',
-                'alamat' => 'Bondowoso',
-                'no_telp' => '083848139012'
-            ],
-
-            [
-                'nama_supplier' => 'M. Rizky Ramadhani',
+                'nama_supplier' => 'PT. Utama Raya',
                 'alamat' => 'Pasuruan',
-                'no_telp' => '083848139012'
-            ],
+                'no_telp' => '087662516253'
+            ]
+        ]);
 
+        DB::table('barang')->insert([
             [
-                'nama_supplier' => 'Bahrul Ulum',
-                'alamat' => 'Situbondo',
-                'no_telp' => '083848139012'
+                'nama_barang' => 'Motor Cross Mini',
+                'stok' => '0'
             ],
-
             [
-                'nama_supplier' => 'Zainur Roziqin',
-                'alamat' => 'Situbondo',
-                'no_telp' => '083848139012'
+                'nama_barang' => 'Motor Cross Listrik',
+                'stok' => '0'
+            ],
+            [
+                'nama_barang' => 'Motor Cross Sakti',
+                'stok' => '0'
             ]
         ]);
     }
