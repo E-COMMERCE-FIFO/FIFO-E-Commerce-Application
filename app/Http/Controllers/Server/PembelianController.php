@@ -46,7 +46,7 @@ class PembelianController extends Controller
     public function store(StorePembelianRequest $request)
     {
         $data = $request->all();
-        Pembelian::create($data);
+        dd($data);
     }
 
     /**

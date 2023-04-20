@@ -86,13 +86,17 @@
                                   class="form-control"
                                   id="jlmBeli"
                                   name="jumlah_pembelian"
-                                  required
                               />
+                              @error('jumlah_pembelian')
+                                <strong class="fw-bold d-block text-danger mt-2">
+                                  <small>&nbsp;* {{ $message }}</small>
+                                </strong>
+                              @enderror
                           </div>
                           <div class="col-md-6">
                               <label for="hargaBeli" class="form-label">*Harga Beli</label>
                               <input
-                                  type="date"
+                                  type="number"
                                   class="form-control"
                                   id="hargaBeli"
                                   name="harga_beli"
@@ -106,7 +110,7 @@
                           <div class="col-md-6">
                               <label for="hargaJual" class="form-label">*Harga Jual</label>
                               <input
-                                  type="date"
+                                  type="number"
                                   class="form-control"
                                   id="hargaJual"
                                   name="harga_jual"
@@ -136,9 +140,14 @@
                               </strong>
                             @enderror
                           </div>
-                          <div class="col-md-12 mt-4">
-                              <button type="submit" class="btn btn-primary w-100">
+                          <div class="col-md-10 mt-4">
+                              <button type="submit" class="btn btn-success w-100">
                                   Simpan Data Pembelian
+                              </button>
+                          </div>
+                          <div class="col-md-2 mt-4">
+                              <button id="addBarang" type="button" class="btn btn-primary w-100">
+                                  Tambah Barang
                               </button>
                           </div>
                       </form>
