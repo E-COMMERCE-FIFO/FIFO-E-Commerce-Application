@@ -24,8 +24,8 @@ class UpdateBarangRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_barang' => 'required',
-            'stok' => 'required'
+            'nama_barang' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
+            'stok' => 'required|numeric|min:0'
         ];
     }
 
@@ -33,7 +33,10 @@ class UpdateBarangRequest extends FormRequest
     {
         return [
             'nama_barang.required' => 'Nama barang harus diisi!',
-            'stok.required' => 'Stok harus diisi!'
+            'nama_barang.regex' => 'Nama barang harus sesuai!',
+            'stok.required' => 'Stok harus diisi!',
+            'stok.numeric' => 'Stok harus berupa angka!',
+            'stok.min' => 'Stok harus bernilai angka positif!'
         ];
     }
 }
