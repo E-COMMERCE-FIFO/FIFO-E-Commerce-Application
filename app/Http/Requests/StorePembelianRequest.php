@@ -26,14 +26,14 @@ class StorePembelianRequest extends FormRequest
         return [
             'tgl_pembelian' => 'required',
             'id_barang' => 'required',
-            'jumlah_pembelian' => 'required',
+            'jumlah_pembelian.*' => 'required|numeric|min:0',
             'harga_beli' => 'required',
             'harga_jual' => 'required',
             'id_supplier' => 'required'
         ];
     }
 
-    public function messages() 
+    public function messages()
     {
         return [
             'tgl_pembelian.required' => 'Tanggal pembelian harus diisi!',
@@ -41,7 +41,9 @@ class StorePembelianRequest extends FormRequest
             'jumlah_pembelian.required' => 'Jumlah pembelian harus diisi!',
             'harga_beli.required' => 'Harga beli harus diisi!',
             'harga_jual.required' => 'Harga jual harus diisi!',
-            'id_supplier.required' => 'Supplier harus diisi!'
+            'id_supplier.required' => 'Supplier harus diisi!',
+            // 'jumlah_pembelian.*.numeric' => 'Jumlah pembelian harus berupa angka!',
+            // 'jumlah_pembelian.*.min' => 'Jumlah pembelian minimal 0!',
         ];
     }
 }
