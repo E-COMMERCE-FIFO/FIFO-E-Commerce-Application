@@ -180,23 +180,6 @@
             </ul>
          </li>
          <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#merk-nav" data-bs-toggle="collapse" href="#">
-               <i class="bi bi-inboxes"></i><span>Merek Barang</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="merk-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-               <li>
-                  <a href="{{ url('dashboard') }}">
-                     <i class="bi bi-circle"></i><span>Data Merek</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="{{ url('dashboard') }}">
-                     <i class="bi bi-circle"></i><span>Tambah Merek</span>
-                  </a>
-               </li>
-            </ul>
-         </li>
-         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#barang-nav" data-bs-toggle="collapse" href="#">
                <i class="bi bi-boxes"></i><span>Barang</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
