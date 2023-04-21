@@ -56,5 +56,13 @@ class DatabaseSeeder extends Seeder
                 'stok' => '0'
             ]
         ]);
+
+        DB::table('users')->insert([
+            'nama_lengkap' => 'Manager Roket Mini Moto',
+            'email' => 'managerroket.minimoto@gmail.com',
+            'password' => Hash::make('loginadmin'),
+            'no_telp' => '089872124673',
+            'role' => 'Administrator'
+        ]);
     }
 }

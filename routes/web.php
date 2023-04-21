@@ -6,8 +6,8 @@ use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Server\BarangController;
 use App\Http\Controllers\Server\SupplierController;
 use App\Http\Controllers\Server\DashboardController;
-use App\Http\Controllers\Server\DetailTrxController;
 use App\Http\Controllers\Server\PembelianController;
+use App\Http\Controllers\Server\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +42,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     ]);
     Route::resource('/pembelian-activity', PembelianController::class)->parameters([
         'pembelian-activity' => 'pembelian'
+    ]);
+    Route::resource('/pengguna-activity', PenggunaController::class)->parameters([
+        'pengguna-activity' => 'pengguna'
     ]);
     
     Route::get('/supplier', [SupplierController::class, 'index']);

@@ -151,12 +151,12 @@
             </a>
             <ul id="pengguna-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('pengguna-activity.index') }}">
                      <i class="bi bi-circle"></i><span>Data Pengguna</span>
                   </a>
                </li>
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('pengguna-activity.create') }}">
                      <i class="bi bi-circle"></i><span>Tambah Admin</span>
                   </a>
                </li>

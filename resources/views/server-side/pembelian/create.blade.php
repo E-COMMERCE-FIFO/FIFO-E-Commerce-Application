@@ -45,7 +45,7 @@
                                 type="text"
                                 class="form-control bg-dark bg-opacity-10"
                                 id="pjawab"
-                                value="Admin Roket Mini Moto"
+                                value="{{ Auth::user()->nama_lengkap }}"
                                 readonly
                             />
                             <input
@@ -53,7 +53,7 @@
                                 class="form-control"
                                 id="pjawab"
                                 name="user_id"
-                                value="1"
+                                value="{{ Auth::user()->id }}"
                             />
                             @error('user_id')
                               <strong class="fw-bold d-block text-danger mt-2">
