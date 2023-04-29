@@ -22,11 +22,11 @@ use App\Http\Controllers\Server\PenggunaController;
 
 // ! INDEX
 Route::get('/', function () {
-    return to_route('login');
+    return to_route('beranda');
 });
 
 // ! ROUTE CLIENT SIDE
-Route::get('/beranda', [LandingController::class, 'index']);
+Route::get('/beranda', [LandingController::class, 'index'])->name('beranda');
 
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
