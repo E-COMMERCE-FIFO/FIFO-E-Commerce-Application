@@ -22,19 +22,19 @@
 <body>
    <section id="topbar" class="d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-         <i class="bi bi-geo-alt-fill d-flex align-items-center">
-            <a href="mailto:contact@example.com">Kel. Blindungan, Bondowoso, Jawa Timur 68212</a>
-         </i>
-         <i class="bi bi-alarm d-flex align-items-center ms-4"><span>{{ $time }}</span></i>
-         <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 877-5917-4130</span></i>
-      </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-         <a href="#" class="twitter"><i class="bi bi-link-45deg"></i></a>
-         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-         <a href="#" class="instagram"><i class="bi bi-whatsapp"></i></a>
-      </div>
+         <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-geo-alt-fill d-flex align-items-center">
+               <a href="mailto:contact@example.com">Kel. Blindungan, Bondowoso, Jawa Timur 68212</a>
+            </i>
+            <i class="bi bi-alarm d-flex align-items-center ms-4"><span>{{ $time }}</span></i>
+            <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 877-5917-4130</span></i>
+         </div>
+         <div class="social-links d-none d-md-flex align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-link-45deg"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-whatsapp"></i></a>
+         </div>
       </div>
    </section>
 
@@ -45,17 +45,7 @@
          </div>
          <nav id="navbar" class="navbar">
             <ul>
-               <li class="dropdown">
-                  <a href="#">
-                     <span>Beranda</span> <i class="bi bi-chevron-down"></i>
-                  </a>
-                  <ul>
-                     <li><a href="#">Drop Down 1</a></li>
-                     <li><a href="#">Drop Down 2</a></li>
-                     <li><a href="#">Drop Down 3</a></li>
-                     <li><a href="#">Drop Down 4</a></li>
-                  </ul>
-               </li>
+               <li><a href="{{ route('beranda') }}">Beranda</a></li>
                <li class="dropdown">
                   <a href="#">
                      <span>Katalog Produk</span> <i class="bi bi-chevron-down"></i>
@@ -67,17 +57,8 @@
                      <li><a href="#">Drop Down 4</a></li>
                   </ul>
                </li>
-               <li class="dropdown">
-                  <a href="#">
-                     <span>Cara Belanja</span> <i class="bi bi-chevron-down"></i>
-                  </a>
-                  <ul>
-                     <li><a href="#">Drop Down 1</a></li>
-                     <li><a href="#">Drop Down 2</a></li>
-                     <li><a href="#">Drop Down 3</a></li>
-                     <li><a href="#">Drop Down 4</a></li>
-                  </ul>
-               </li>
+               <li><a href="{{ route('beranda') }}">Cara Belanja</a></li>
+               <li><a href="{{ route('beranda') }}">Riwayat Pembelian</a></li>
                <li><a href="{{ url('/login') }}">Masuk</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
@@ -94,21 +75,21 @@
                <div class="col-lg-3 col-md-6 footer-links">
                   <h4>Daftar Halaman</h4>
                   <ul>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Beranda</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Katalog Produk</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Cara Belanja</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Riwayat Pembelian</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Masuk/Daftar</a></li>
                   </ul>
                </div>
                <div class="col-lg-3 col-md-6 footer-links">
                   <h4>Daftar Produk</h4>
                   <ul>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
                   </ul>
                </div>
                <div class="col-lg-3 col-md-6 footer-contact">
