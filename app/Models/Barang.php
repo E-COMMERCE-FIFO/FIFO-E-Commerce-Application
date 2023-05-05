@@ -10,5 +10,9 @@ class Barang extends Model
     use HasFactory;
     protected $table = 'barang';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama_barang', 'stok'];
+    protected $fillable = ['foto_barang','nama_barang', 'stok'];
+
+    public function penjualan() {
+        return $this->hasMany(Penjualan::class);
+    }
 }

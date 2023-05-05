@@ -39,6 +39,22 @@
                               @enderror
                           </div>
                           <div class="col-12">
+                            <label for="inputNanme4" class="form-label"
+                                >*Foto Barang</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="inputNanme4"
+                                name="foto_barang"
+                            />
+                            @error('foto_barang')
+                              <strong class="fw-bold d-block text-danger mt-2">
+                                <small>&nbsp;* {{ $message }}</small>
+                              </strong>
+                            @enderror
+                        </div>
+                          <div class="col-12">
                               <label for="inputEmail4" class="form-label"
                                   >*Stok</label
                               >

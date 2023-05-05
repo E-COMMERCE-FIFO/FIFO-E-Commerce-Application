@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Penjualan extends Model
 {
     use HasFactory;
+    protected $table = 'penjualan';
+    protected $guarded = [];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function barang() {
+        return $this->belongsTo(Barang::class);
+    }
+
+    public function detailPembelian() {
+        return $this->hasMany(DetailPembelian::class);
+    }
 }

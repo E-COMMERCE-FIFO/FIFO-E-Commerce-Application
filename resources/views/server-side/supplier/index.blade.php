@@ -76,35 +76,3 @@
   </main><!-- End #main -->
 
 @endsection
-
-
-{{-- <table border="1">
-    <tr>
-        <th>id</th>
-        <th>nama</th>
-        <th>Alamat</th>
-        <th>telepon</th>
-        <th>Aksi</th>
-    </tr>
-    
-    
-    @foreach($supplier as $supplier)
-    <tr>
-       <td> {{ $supplier -> id }}</td>
-       <td>{{ $supplier -> nama_supplier }}</td>
-       <td>{{ $supplier -> alamat }}</td>
-       <td>{{ $supplier -> no_telp }}</td>
-       <td>
-        <a href="{{ url ($supplier->id. '/edit') }}">Edit</a>
-       <form action="{{ $supplier -> id }}" method="POST">
-        @csrf
-        @method('delete')
-        <input type="submit" value="delete">
-    </form>
-       </td>
-    </tr>    
-    @endforeach
-    
-    
-    </table>
-    <a href="/create">Tambahkan Supplier</a> --}}

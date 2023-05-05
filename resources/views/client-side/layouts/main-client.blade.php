@@ -17,6 +17,7 @@
    <link href="{{ url('assets/client-side/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
    <link href="{{ url('assets/client-side/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
    <link href="{{ url('assets/client-side/css/style.css') }}" rel="stylesheet">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <title>@yield('title')</title>
 </head>
 <body>
@@ -131,5 +132,9 @@
    <script src="{{ url('assets/client-side/vendor/waypoints/noframework.waypoints.js') }}"></script>
    <script src="{{ url('assets/client-side/vendor/php-email-form/validate.js') }}"></script>
    <script src="{{ url('assets/client-side/js/main.js') }}"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+     AOS.init();
+   </script>
 </body>
 </html>

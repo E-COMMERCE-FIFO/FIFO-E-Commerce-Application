@@ -8,6 +8,8 @@ use App\Http\Controllers\Server\SupplierController;
 use App\Http\Controllers\Server\DashboardController;
 use App\Http\Controllers\Server\PembelianController;
 use App\Http\Controllers\Server\PenggunaController;
+use App\Http\Controllers\Server\PenjualanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,9 @@ Route::get('/', function () {
 });
 
 // ! ROUTE CLIENT SIDE
-Route::get('/beranda', [LandingController::class, 'index'])->name('beranda');
+Route::get('/beranda', [PenjualanController::class, 'index'])->name('beranda');
+Route::get('/edit/{item}', [PenjualanController::class, 'edit'])->name('edit');
+Route::post('/penjualan/store', [PenjualanController::class, 'store'])->name('store');
 
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);

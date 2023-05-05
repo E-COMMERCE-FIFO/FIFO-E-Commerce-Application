@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->date('tanggal_penjualan');
-            $table->float('jumlah_bayar');
+            $table->integer('jumlah_bayar');
             $table->integer('qty');
             $table->foreignId('id_barang')->constrained('barang');
             $table->timestamps();

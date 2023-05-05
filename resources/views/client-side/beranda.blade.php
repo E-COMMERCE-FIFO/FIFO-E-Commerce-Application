@@ -47,29 +47,36 @@
    <section id="services" class="services">
       <div class="container">
          <div class="row">
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-               <div class="icon-box shadow-sm">
-                  <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                  <h4><a href="">Lorem Ipsum</a></h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            @foreach ( $barang as $item)
+            <div class="col-md-4 mb-3">
+            <div class="card"  data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
+               <img class="card-img-top" src="{{ $item->foto_barang }}" alt="Card image cap">
+               <div class="card-body">
+                  <h6 class="text-center">{{ $item->nama_barang }}</h6>
+                  <p>Rp. 10.000.000</p>
+                  <a href="{{ route('edit', $item->id) }}" class="btn btn-primary">Beli Sekarang</a>
                </div>
+             </div>
             </div>
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-               <div class="icon-box shadow-sm">
-                  <div class="icon"><i class="bx bx-file"></i></div>
-                  <h4><a href="">Sed ut perspiciatis</a></h4>
-                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-               </div>
-            </div>
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-               <div class="icon-box shadow-sm">
-                  <div class="icon"><i class="bx bx-tachometer"></i></div>
-                  <h4><a href="">Magni Dolores</a></h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-               </div>
-            </div>
+            @endforeach
          </div>
       </div>
+
+      <span class="qty-up">1</span>
    </section>
 </main>
 @endsection
+
+{{-- <div class="row">
+   @foreach ($barang as $item)    
+   <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+      <div  class="icon-box shadow-sm">
+         <img src="{{ $item->foto_barang }}" alt="" width="300px">
+         <h6 class="text-center">{{ $item->nama_barang }}</h6>
+         <form action="" method="POST">
+         <a href="{{ route('edit', $item->id) }}" class="btn btn-primary">beli</a>
+      </form>
+      </div>
+   </div>           
+   @endforeach        
+</div> --}}
