@@ -207,7 +207,7 @@
                   </a>
                </li>
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ url('penjualan') }}">
                      <i class="bi bi-circle"></i><span>Penjualan</span>
                   </a>
                </li>

@@ -24,29 +24,40 @@
                         <button class="btn btn-outline-secondary" type="button" id="btn-plus">+</button>
                     </div>
                     <label for="pembeli" class="form-label">*Total Bayar</label>
-                    <input type="number" class="form-control mb-3" name="jumlah_bayar" value="" required/>
+                    <input type="number" class="form-control mb-3" name="jumlah_bayar" id="jmlBayar" value="{{ $jual->harga_jual }}" readonly/>
                     <div class="col-md-6">
                     <input type="submit" name="submit" value="Beli Sekarang" class="btn btn-primary">
                     </div>     
-            </div>
+                </div>
         </div>  
   </form>
 </div>
 
-
 <script>
-    document.getElementById("btn-plus").addEventListener("click", () => {
-        let inputQty = document.getElementsByName("qty")[0];
-        if (parseInt(inputQty.value) < parseInt(inputQty.max)) {
-            inputQty.value = parseInt(inputQty.value) + 1;
+    const btnPlus = document.querySelector("#btn-plus");
+    const btnMinus = document.querySelector("#btn-minus");
+    const inputQty = document.querySelector("input[name=qty]");
+    const inputJmlBayar = document.querySelector('#jmlBayar');
+
+    btnPlus.addEventListener('click', () => {
+        const qty = parseInt(inputQty.value);
+        const stok = parseInt('{{ $barang->stok }}');
+
+        if (qty < stok) {
+            inputQty.value = qty + 1;
+            inputJmlBayar.value = (qty + 1) * parseInt('{{ $jual->harga_jual }}');
         }
     });
 
-    document.getElementById("btn-minus").addEventListener("click", () => {
-        let inputQty = document.getElementsByName("qty")[0];
-        if (inputQty.value > inputQty.min) {
-            inputQty.value = parseInt(inputQty.value) - 1;
+    btnMinus.addEventListener('click', () => {
+        const qty = parseInt(inputQty.value);
+        const stok = parseInt('{{ $barang->stok }}');
+
+        if (qty > 1) {
+            inputQty.value = qty - 1;
+            inputJmlBayar.value = (qty - 1) * parseInt('{{ $jual->harga_jual }}');
         }
     });
 </script>
+
 @endsection

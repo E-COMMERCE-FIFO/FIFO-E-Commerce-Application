@@ -9,7 +9,7 @@ use App\Http\Controllers\Server\DashboardController;
 use App\Http\Controllers\Server\PembelianController;
 use App\Http\Controllers\Server\PenggunaController;
 use App\Http\Controllers\Server\PenjualanController;
-
+use App\Http\Controllers\ServerPenjualanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,6 @@ Route::get('/', function () {
 Route::get('/beranda', [PenjualanController::class, 'index'])->name('beranda');
 Route::get('/edit/{item}', [PenjualanController::class, 'edit'])->name('edit');
 Route::post('/penjualan/store', [PenjualanController::class, 'store'])->name('store');
-
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
 
@@ -57,6 +56,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/{id}/edit', [SupplierController::class, 'edit']);
     Route::put('/{id}', [SupplierController::class, 'update']);
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
+    Route::get('/penjualan', [ServerPenjualanController::class, 'index']);
+    Route::delete('/penjualan/{id}', [ServerPenjualanController::class, 'destroy']);
+
     
     // ? ROUTE BREEZE 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

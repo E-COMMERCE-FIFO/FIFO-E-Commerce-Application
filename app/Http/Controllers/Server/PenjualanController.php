@@ -46,6 +46,13 @@ class PenjualanController extends Controller
         $barang = Barang::find($request->id_barang);
         $barang->stok = $barang->stok - $request->qty;
         $barang->save();
+
+        $detailPembelian = DetailPembelian::select('harga_jual')->where('id_barang', $request->id_barang)->first();
+        $hargaJual = $detailPembelian->harga_jual;
+        $jumlahBayar = $hargaJual * $request->qty;
+        $request->merge(['jumlah_bayar' => $jumlahBayar]);
+        
+       
         Penjualan::create($request->except(['_token', 'submit']));
         return redirect('beranda');
     }
@@ -70,9 +77,9 @@ class PenjualanController extends Controller
     {
         $data = [ 'time' => date('h:i a')];
         $barang = Barang::find($id);
-
+        $jual = Barang::join('detail_pembelian', 'detail_pembelian.id_barang', '=', 'barang.id')->select('barang.nama_barang', 'detail_pembelian.harga_jual') ->where('barang.id', $id)->first();
         $user = auth()->user();
-        return view('client-side.penjualan', compact('barang','user'))->with($data);
+        return view('client-side.penjualan', compact('barang','user','jual'))->with($data);
     }
 
     /**

@@ -79,7 +79,7 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         $supplier->update($request->except('_token', 'submit'));
-         return redirect ('supplier');
+        return redirect ('supplier');
     }
 
     /**
