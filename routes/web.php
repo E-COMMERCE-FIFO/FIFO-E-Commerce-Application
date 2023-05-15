@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Server\BarangController;
 use App\Http\Controllers\Server\SupplierController;
 use App\Http\Controllers\Server\DashboardController;
+use App\Http\Controllers\Server\KategoriController;
 use App\Http\Controllers\Server\PembelianController;
 use App\Http\Controllers\Server\PenggunaController;
 use App\Http\Controllers\Server\PenjualanController;
@@ -40,6 +41,9 @@ Route::get('/form', [DashboardController::class, 'form']);
 Route::middleware(['auth', 'verified'])->group(function () {
     // ! ROUTE SERVER SIDE
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/kategori-activity', KategoriController::class)->parameters([
+        'kategori-activity' => 'kategori'
+    ]);
     Route::resource('/barang-activity', BarangController::class)->parameters([
         'barang-activity' => 'barang'
     ]);
