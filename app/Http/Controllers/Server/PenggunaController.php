@@ -18,9 +18,21 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $pengguna = User::all();
+        $pengguna = User::where('role', 'Administrator')->get();
         $numb = 1;
         return view('server-side.pengguna.index', compact(['pengguna', 'numb']));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function customer()
+    {
+        $pengguna = User::where('role', 'Customer')->get();
+        $numb = 1;
+        return view('server-side.pengguna.customer', compact(['pengguna', 'numb']));
     }
 
     /**

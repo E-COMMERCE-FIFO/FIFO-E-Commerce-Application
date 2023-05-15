@@ -1,14 +1,14 @@
 @extends('server-side.layouts.main-server')
-@section('title', 'Data Barang')
+@section('title', 'Data Pelanggan')
 @section('main-content')
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Barang</h1>
+      <h1>Data Pelanggan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-          <li class="breadcrumb-item">Barang</li>
-          <li class="breadcrumb-item active">Data Barang</li>
+          <li class="breadcrumb-item">Pelanggan</li>
+          <li class="breadcrumb-item active">Data Pelanggan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,10 +21,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                  <h5 class="card-title">Data Barang</h5>
-                  <a href="{{ route('barang-activity.create') }}">
-                    <button class="btn btn-success btn-sm">Tambah Barang</button>
-                  </a>
+                  <h5 class="card-title">Data Pelanggan</h5>
                 </div>
               </div>
               @if (Session::has('message'))
@@ -38,31 +35,24 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Nama Barang</th>
-                    <th scope="col">Stok</th>
-                    <th scope="col">Pengaturan</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nomor HP</th>
+                    <th scope="col">Role</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @forelse ($barang as $item)
+                  @forelse ($pengguna as $item)
                     <tr>
                       <th scope="row">{{ $numb++ }}</th>
-                      <td>{{ $item->kategori }}</td>
-                      <td>{{ $item->nama_barang }}</td>
-                      <td>{{ $item->stok }}</td>
-                      <td>
-                        <form action="{{ route('barang-activity.destroy', $item->id) }}" method="post">
-                          @csrf
-                          @method('delete')
-                          <a href="{{ route('barang-activity.edit', $item->id) }}" class="badge bg-warning text-white">edit</a>
-                          <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus barang ini?')">hapus</button>
-                        </form>
-                      </td>
+                      <td>{{ $item->nama_lengkap }}</td>
+                      <td>{{ $item->email }}</td>
+                      <td>{{ $item->no_telp }}</td>
+                      <td>{{ $item->role }}</td>
                     </tr>
                   @empty
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <i class="bi bi-exclamation-octagon me-1"></i> Belum ada data barang!
+                      <i class="bi bi-exclamation-octagon me-1"></i> Belum ada data Pelanggan!
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                   @endforelse

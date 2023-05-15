@@ -1,14 +1,14 @@
 @extends('server-side.layouts.main-server')
-@section('title', 'Data Pengguna')
+@section('title', 'Data Admin')
 @section('main-content')
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Pengguna</h1>
+      <h1>Data Admin</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-          <li class="breadcrumb-item">Pengguna</li>
-          <li class="breadcrumb-item active">Data Pengguna</li>
+          <li class="breadcrumb-item">Admin</li>
+          <li class="breadcrumb-item active">Data Admin</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,9 +21,9 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                  <h5 class="card-title">Data Pengguna</h5>
+                  <h5 class="card-title">Data Admin</h5>
                   <a href="{{ route('pengguna-activity.create') }}">
-                    <button class="btn btn-success btn-sm">Tambah Pengguna</button>
+                    <button class="btn btn-success btn-sm">Tambah Admin</button>
                   </a>
                 </div>
               </div>
@@ -42,7 +42,6 @@
                     <th scope="col">Email</th>
                     <th scope="col">Nomor HP</th>
                     <th scope="col">Role</th>
-                    <th scope="col">Pengaturan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,13 +52,6 @@
                       <td>{{ $item->email }}</td>
                       <td>{{ $item->no_telp }}</td>
                       <td>{{ $item->role }}</td>
-                      <td>
-                        <form action="{{ route('pengguna-activity.destroy', $item->id) }}" method="post">
-                          @csrf
-                          @method('delete')
-                          <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus pengguna ini?')">hapus</button>
-                        </form>
-                      </td>
                     </tr>
                   @empty
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">

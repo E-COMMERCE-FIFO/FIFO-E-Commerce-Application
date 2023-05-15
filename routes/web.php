@@ -50,6 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'pengguna-activity' => 'pengguna'
     ]);
     
+    Route::get('/data-pelanggan', [PenggunaController::class, 'customer']);
     Route::get('/supplier', [SupplierController::class, 'index']);
     Route::get('/createsupplier', [SupplierController::class, 'create']);
     Route::post('/add', [SupplierController::class, 'store']);

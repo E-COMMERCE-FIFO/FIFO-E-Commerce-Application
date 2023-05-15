@@ -17,7 +17,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id')->select('*')->get();
         $numb = 1;
         return view('server-side.barang.index', compact(['barang', 'numb']));
     }

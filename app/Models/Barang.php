@@ -12,7 +12,7 @@ class Barang extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['foto_barang','nama_barang', 'stok'];
 
-    public function penjualan() {
-        return $this->hasMany(Penjualan::class);
+    public function kategori() {
+        return $this->belongsTo(Kategori::class);
     }
 }

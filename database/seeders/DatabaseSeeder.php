@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
- 
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-      
+
         DB::table('supplier')->insert([
             [
                 'nama_supplier' => 'PT. Makmur Jaya',
@@ -42,20 +42,27 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+        DB::table('kategori')->insert([
+            'kategori' => 'Motor Cross',
+        ]);
+
         DB::table('barang')->insert([
             [
                 'foto_barang' => 'https://www.autos.id/wp-content/uploads/2021/10/LENKA-Minitrail-MC55-5.jpeg',
                 'nama_barang' => 'Motor Cross Mini',
+                'id_kategori' => '1',
                 'stok' => '0'
             ],
             [
                 'foto_barang' => 'https://www.autos.id/wp-content/uploads/2021/10/LENKA-Minitrail-MC55-5.jpeg',
                 'nama_barang' => 'Motor Cross Listrik',
+                'id_kategori' => '1',
                 'stok' => '0'
             ],
             [
                 'foto_barang' => 'https://www.autos.id/wp-content/uploads/2021/10/LENKA-Minitrail-MC55-5.jpeg',
                 'nama_barang' => 'Motor Cross Sakti',
+                'id_kategori' => '1',
                 'stok' => '0'
             ]
         ]);

@@ -19,7 +19,12 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Data Supplier</h5>
+              <div class="col-md-12 d-flex justify-content-between align-items-center">
+                <h5 class="card-title">Data Supplier</h5>
+                <a href="{{ url('createsupplier') }}">
+                  <button class="btn btn-success btn-sm">Tambah Supplier</button>
+                </a>
+              </div>
               @if (Session::has('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                   <i class="bi bi-check-circle me-1"></i> {{ Session::get('message') }}

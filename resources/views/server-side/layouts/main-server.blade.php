@@ -152,12 +152,12 @@
             <ul id="pengguna-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                <li>
                   <a href="{{ route('pengguna-activity.index') }}">
-                     <i class="bi bi-circle"></i><span>Data Pengguna</span>
+                     <i class="bi bi-circle"></i><span>Data Admin</span>
                   </a>
                </li>
                <li>
-                  <a href="{{ route('pengguna-activity.create') }}">
-                     <i class="bi bi-circle"></i><span>Tambah Admin</span>
+                  <a href="{{ url('data-pelanggan') }}">
+                     <i class="bi bi-circle"></i><span>Data Pelanggan</span>
                   </a>
                </li>
             </ul>
@@ -166,7 +166,7 @@
             <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="{{ url('dashboard') }}">
                <i class="bi bi-bus-front-fill"></i><span>Supplier</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                <li>
                   <a href="{{ url('supplier') }}">
                      <i class="bi bi-circle"></i><span>Data Supplier</span>
