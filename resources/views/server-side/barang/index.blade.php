@@ -55,7 +55,6 @@
                         <form action="{{ route('barang-activity.destroy', $item->id) }}" method="post">
                           @csrf
                           @method('delete')
-                          <a href="{{ route('barang-activity.edit', $item->id) }}" class="badge bg-warning text-white">edit</a>
                           <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus barang ini?')">hapus</button>
                         </form>
                       </td>

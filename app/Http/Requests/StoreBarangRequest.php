@@ -25,6 +25,8 @@ class StoreBarangRequest extends FormRequest
     {
         return [
             'nama_barang' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
+            'nama_barang' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
+            'id_kategori' => 'required',
             'stok' => 'required|numeric|min:0'
         ];
     }

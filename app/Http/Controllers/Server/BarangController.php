@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
@@ -29,7 +30,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('server-side.barang.create');
+        $kategori = Kategori::all();
+        return view('server-side.barang.create', compact('kategori'));
     }
 
     /**
@@ -41,6 +43,9 @@ class BarangController extends Controller
     public function store(StoreBarangRequest $request)
     {
         $data = $request->all();
+        $fotoBarang = $data['foto_barang'];
+        $fotoBarang->storeAs('public/barang', $fotoBarang->hashName());
+        $data['foto_barang'] = $data['foto_barang']->hashName();
         Barang::create($data);
         return Redirect::route('barang-activity.index')->with('message', 'Barang berhasil ditambahkan.');
     }

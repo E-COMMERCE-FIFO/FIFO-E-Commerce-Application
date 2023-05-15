@@ -20,7 +20,7 @@
                   <div class="card-body">
                       <h5 class="card-title">Lengkapi data di bawah ini!</h5>
                       <!-- Vertical Form -->
-                      <form class="row g-3" action="{{ route('barang-activity.store') }}" method="post" autocomplete="off">
+                      <form class="row g-3" action="{{ route('barang-activity.store') }}" enctype="multipart/form-data" method="post" autocomplete="off">
                         @csrf
                           <div class="col-12">
                               <label for="inputNanme4" class="form-label"
@@ -39,21 +39,43 @@
                               @enderror
                           </div>
                           <div class="col-12">
-                            <label for="inputNanme4" class="form-label"
+                            <label for="fotoBarang" class="form-label"
                                 >*Foto Barang</label
                             >
                             <input
-                                type="text"
+                                type="file"
                                 class="form-control"
-                                id="inputNanme4"
+                                id="fotoBarang"
                                 name="foto_barang"
+                                required
                             />
                             @error('foto_barang')
                               <strong class="fw-bold d-block text-danger mt-2">
                                 <small>&nbsp;* {{ $message }}</small>
                               </strong>
                             @enderror
-                        </div>
+                          </div>
+                          <div class="col-12">
+                            <label for="ktgBarang" class="form-label"
+                                >*Kategori Barang</label
+                            >
+                            <select name="id_kategori" id="id_kategori" class="form-select" required>
+                              <option value="" id="ktgtest">~ pilih kategori ~</option>
+                              @forelse ($kategori as $itemK)
+                                <option value="{{ $itemK['id'] }}">{{ $itemK['kategori'] }}</option>
+                              @empty
+                              <option value="">~ belum ada data supplier ~</option>
+                                <script>
+                                  document.getElementById('ktgtest').remove();
+                                </script>
+                              @endforelse
+                            </select>
+                            @error('id_kategori')
+                              <strong class="fw-bold d-block text-danger mt-2">
+                                <small>&nbsp;* {{ $message }}</small>
+                              </strong>
+                            @enderror
+                          </div>
                           <div class="col-12">
                               <label for="inputEmail4" class="form-label"
                                   >*Stok</label
