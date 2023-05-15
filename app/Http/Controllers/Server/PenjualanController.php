@@ -43,17 +43,22 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        $barang = Barang::find($request->id_barang);
-        $barang->stok = $barang->stok - $request->qty;
+        $data = $request->all();
+        $barang = Barang::find($data['id_barang']);
+        $barang->stok = $barang->stok - $data['qty'];
         $barang->save();
-
-        $detailPembelian = DetailPembelian::select('harga_jual')->where('id_barang', $request->id_barang)->first();
+    
+        $detailPembelian = DetailPembelian::select('harga_jual')->where('id_barang', $data['id_barang'])->first();
         $hargaJual = $detailPembelian->harga_jual;
-        $jumlahBayar = $hargaJual * $request->qty;
-        $request->merge(['jumlah_bayar' => $jumlahBayar]);
+        $jumlahBayar = $hargaJual *  $data['qty'];
+
+        $fotoBarang = $data['bukti_pembayaran'];
+        $namaFile = $data['user_id'] . '_' . $fotoBarang->getClientOriginalName();
+        $fotoBarang->storeAs('public/bukti_pembayaran', $namaFile);
+        $data['bukti_pembayaran'] = $namaFile;
+
         
-       
-        Penjualan::create($request->except(['_token', 'submit']));
+        Penjualan::create($data, $jumlahBayar);
         return redirect('beranda');
     }
     /**
