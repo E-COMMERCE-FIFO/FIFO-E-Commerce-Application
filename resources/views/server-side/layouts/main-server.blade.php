@@ -185,13 +185,13 @@
             </a>
             <ul id="barang-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                <li>
-                  <a href="{{ route('barang-activity.index') }}">
-                     <i class="bi bi-circle"></i><span>Data Barang</span>
+                  <a href="{{ route('kategori-activity.index') }}">
+                     <i class="bi bi-circle"></i><span>Data Kategori</span>
                   </a>
                </li>
                <li>
-                  <a href="{{ route('barang-activity.create') }}">
-                     <i class="bi bi-circle"></i><span>Tambah Barang</span>
+                  <a href="{{ route('barang-activity.index') }}">
+                     <i class="bi bi-circle"></i><span>Data Barang</span>
                   </a>
                </li>
             </ul>

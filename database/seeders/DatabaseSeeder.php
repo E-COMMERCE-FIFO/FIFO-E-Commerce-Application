@@ -48,19 +48,19 @@ class DatabaseSeeder extends Seeder
 
         DB::table('barang')->insert([
             [
-                'foto_barang' => 'https://www.autos.id/wp-content/uploads/2021/10/LENKA-Minitrail-MC55-5.jpeg',
+                'foto_barang' => 'LENKA-Minitrail-MC55-5.jpeg',
                 'nama_barang' => 'Motor Cross Mini',
                 'id_kategori' => '1',
                 'stok' => '0'
             ],
             [
-                'foto_barang' => 'https://www.autos.id/wp-content/uploads/2021/10/LENKA-Minitrail-MC55-5.jpeg',
+                'foto_barang' => 'LENKA-Minitrail-MC55-5.jpeg',
                 'nama_barang' => 'Motor Cross Listrik',
                 'id_kategori' => '1',
                 'stok' => '0'
             ],
             [
-                'foto_barang' => 'https://www.autos.id/wp-content/uploads/2021/10/LENKA-Minitrail-MC55-5.jpeg',
+                'foto_barang' => 'LENKA-Minitrail-MC55-5.jpeg',
                 'nama_barang' => 'Motor Cross Sakti',
                 'id_kategori' => '1',
                 'stok' => '0'

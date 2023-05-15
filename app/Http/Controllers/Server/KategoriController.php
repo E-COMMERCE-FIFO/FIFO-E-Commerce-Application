@@ -16,7 +16,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        return view('server-side.kategori.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('server-side.kategori.create');
     }
 
     /**
