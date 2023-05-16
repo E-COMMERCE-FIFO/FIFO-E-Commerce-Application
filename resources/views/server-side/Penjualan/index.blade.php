@@ -42,13 +42,13 @@
                       <th scope="row">{{  $number++ }}</th>
                         <td>{{ $item->tanggal_penjualan }}</td>
                         <td>{{ $item->nama_lengkap }}</td>
-                     <td>
-                        <a href="#" class="badge bg-success">Detail</a>
-                     </td>
+                        <td>
+                          <a href="{{ url ($item->id.'/detail') }}" class="badge bg-success">Detail</a>
+                        </td>
                     </tr>
                   @empty
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <i class="bi bi-exclamation-octagon me-1"></i> Belum ada data barang!
+                      <i class="bi bi-exclamation-octagon me-1"></i> Belum ada data Penjualan!
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                   @endforelse
@@ -64,5 +64,4 @@
     </section>
 
   </main><!-- End #main -->
-
 @endsection

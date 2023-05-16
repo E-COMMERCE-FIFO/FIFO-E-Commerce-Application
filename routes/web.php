@@ -63,6 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
     Route::get('/penjualan', [ServerPenjualanController::class, 'index']);
     Route::delete('/penjualan/{id}', [ServerPenjualanController::class, 'destroy']);
+    Route::get('/{id}/detail', [ServerPenjualanController::class, 'show']);
 
     
     // ? ROUTE BREEZE 

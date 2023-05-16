@@ -8,7 +8,7 @@
         <div class="card col-md-12 mx-auto mb-5 shadow p-3 bg-white-rounded">
             <div class="row">
                 <div class=" col-md-6">
-                    <img src="{{ $barang->foto_barang }}" alt="" width="100%" >
+                    <img src="{{ Storage::url('public/barang/') . $barang->foto_barang }}" alt="" width="100%" >
                 </div>
                 <div class="col-md-6">
                     <h3 class="text-center"> {{ $barang->nama_barang }} </h3>

@@ -76,12 +76,12 @@ class DatabaseSeeder extends Seeder
             'role' => 'Administrator'
             ],
             [
-            'nama_lengkap' => 'Manager Roket Mini Moto',
+            'nama_lengkap' => 'Diana',
             'email' => 'diana@gmail.com',
             'password' => Hash::make('diana123'),
             'no_telp' => '089872124673',
             'role' => 'Administrator'
-            ]
+            ],
         ]);
     }
 }

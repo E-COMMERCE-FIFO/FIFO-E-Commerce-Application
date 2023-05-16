@@ -15,4 +15,8 @@ class Barang extends Model
     public function kategori() {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function penjualan() {
+        return $this->belongsTo(Penjualan::class);
+    }
 }
