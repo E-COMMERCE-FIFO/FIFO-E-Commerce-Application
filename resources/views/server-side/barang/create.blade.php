@@ -77,11 +77,8 @@
                             @enderror
                           </div>
                           <div class="col-12">
-                              <label for="inputEmail4" class="form-label"
-                                  >*Stok</label
-                              >
                               <input
-                                  type="number"
+                                  type="hidden"
                                   class="form-control"
                                   id="inputEmail4"
                                   name="stok"

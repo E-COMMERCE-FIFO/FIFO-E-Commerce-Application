@@ -21,9 +21,9 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $pembelian = Pembelian::join('users', 'pembelian.user_id', '=', 'users.id')->select('*')->orderBy('tgl_pembelian', 'desc')->get();
         $numb = 1;
-        return view('server-side.pembelian.index', compact('pembelian', 'numb'));
+        $pembelian = Pembelian::join('users', 'pembelian.user_id', '=', 'users.id')->select('pembelian.*', 'users.nama_lengkap')->get();
+        return view('server-side.pembelian.index', compact('numb', 'pembelian'));
     }
 
     /**
@@ -58,6 +58,7 @@ class PembelianController extends Controller
                 $multipleData = array(
                     'id_pembelian' => $data['id_pembelian'],
                     'id_barang' => $data['id_barang'][$key],
+                    'jumlah_pembelian' => $data['jumlah_pembelian'][$key],
                     'harga_beli' => $data['harga_beli'][$key],
                     'harga_jual' => $data['harga_jual'][$key],
                     'id_supplier' => $data['id_supplier'][$key]
@@ -79,7 +80,9 @@ class PembelianController extends Controller
      */
     public function show(Pembelian $pembelian)
     {
-        //
+        $numb = 1;
+        $detail = DetailPembelian::join('pembelian', 'detail_pembelian.id_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'detail_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'detail_pembelian.id_supplier', '=', 'supplier.id')->select('*')->where('id_pembelian', $pembelian->id)->get();
+        return view('server-side.pembelian.detail', compact('pembelian', 'numb', 'detail'));
     }
 
     /**

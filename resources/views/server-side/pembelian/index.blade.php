@@ -50,8 +50,7 @@
                       <td>{{ $item->tgl_pembelian }}</td>
                       <td>{{ $item->nama_lengkap }}</td>
                       <td>
-                        <a href="{{ route('pembelian-activity.show', $item->id) }}" class="badge bg-info text-white">detail</a>
-                        <a href="{{ route('pembelian-activity.edit', $item->id) }}" class="badge bg-warning text-white">edit</a>
+                        <a href="{{ route('pembelian-activity.show', $item->id) }}" class="badge bg-info text-white">lihat detail</a>
                       </td>
                     </tr>
                   @empty

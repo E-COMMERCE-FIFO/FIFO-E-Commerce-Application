@@ -44,9 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function pembelian() {
-        return $this->hasMany(Pembelian::class);
-    }
+    // public function pembelian() {
+    //     return $this->hasMany(Pembelian::class);
+    // }
 
     public function penjualan() {
         return $this->hasMany(Penjualan::class);
