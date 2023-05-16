@@ -68,11 +68,20 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            [
             'nama_lengkap' => 'Manager Roket Mini Moto',
-            'email' => 'managerroket.minimoto@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('loginadmin'),
             'no_telp' => '089872124673',
             'role' => 'Administrator'
+            ],
+            [
+            'nama_lengkap' => 'Manager Roket Mini Moto',
+            'email' => 'diana@gmail.com',
+            'password' => Hash::make('diana123'),
+            'no_telp' => '089872124673',
+            'role' => 'Administrator'
+            ]
         ]);
     }
 }
