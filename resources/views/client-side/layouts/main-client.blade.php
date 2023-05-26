@@ -59,8 +59,18 @@
                   </ul>
                </li>
                <li><a href="{{ route('beranda') }}">Cara Belanja</a></li>
+            
+               @auth
+               @if(Auth::user()->role == 'Administrator')
+               <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+               @else
                <li><a href="{{ route('history') }}">Riwayat Pembelian</a></li>
+               <li><a href="{{ url('/logout') }}">logout</a></li>
+               @endif
+               @else
                <li><a href="{{ url('/login') }}">Masuk</a></li>
+               @endauth
+               
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
          </nav>

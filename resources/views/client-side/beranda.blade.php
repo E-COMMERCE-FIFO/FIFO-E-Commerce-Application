@@ -49,20 +49,30 @@
          <div class="row">
             @foreach ($barang as $item)
             <div class="col-md-4 mb-3">
-               <div class="card" data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
-                  <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+               <div class="card text-center" data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
+                  @if($item->stok == 'kosong')
+                  <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                  @else
+                  <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap"> 
+                  @endif
                   <div class="card-body">
-                     <h6 class="text-center">{{ $item->nama_barang }}</h6>
-                     <p>Rp. 10.000.000</p>
+                     <h6 class="text-center mb-4">{{ $item->nama_barang }}</h6>
+                     @if ($item->stok == 'kosong')
+                     <a href="#" class="btn btn-primary disabled">Beli Sekarang</a>
+                     @else
+                     @auth
+                   
                      <a href="{{ route('edit', $item->id) }}" class="btn btn-primary">Beli Sekarang</a>
+                     @else
+                     <a href="{{ route('login') }}" class="btn btn-primary">Beli Sekarang</a>
+                     @endauth
+                     @endif
                   </div>
                </div>
             </div>
             @endforeach
          </div>
       </div>
-
-      <span class="qty-up">1</span>
    </section>
 </main>
 @endsection

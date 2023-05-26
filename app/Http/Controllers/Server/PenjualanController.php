@@ -23,6 +23,10 @@ class PenjualanController extends Controller
     {
         $data = [ 'time' => date('h:i a')];
         $barang = Barang::all();
+        foreach($barang as $item){
+            $item->stok = ($item->stok > 0) ? 'tersedia' : 'kosong';
+        }
+        
         return view('client-side.beranda', compact('barang'))->with($data);
     }
 
@@ -58,6 +62,32 @@ class PenjualanController extends Controller
         $barang = Barang::find($data['id_barang']);
         $barang->stok -= $data['qty'];
         $barang->save();
+
+        $jumlahQty = $data['qty'];
+        $produkIndex = 0;
+        
+        while ($jumlahQty > 0) {
+            $produk = DetailPembelian::where('id_barang', $data['id_barang'])->skip($produkIndex)->first();
+            
+            if ($produk) {
+                $stokAwal = $produk->jumlah_pembelian;
+                $jumlahPembelianBaru = $stokAwal - $jumlahQty;
+                
+                if ($jumlahPembelianBaru >= 0) {
+                    $produk->jumlah_pembelian = $jumlahPembelianBaru;
+                    $produk->save();
+                    $jumlahQty = 0;
+                } else {
+                    $produk->jumlah_pembelian = 0;
+                    $produk->save();
+                    $jumlahQty -= $stokAwal;
+                    $produkIndex++;
+                }
+            } else {
+                echo "Tidak ada produk yang tersedia.";
+                break;
+            }
+        }
         
         $detailPembelian = DetailPembelian::select('harga_jual')->where('id_barang', $data['id_barang'])->first();
         $hargaJual = $detailPembelian->harga_jual;
@@ -73,26 +103,7 @@ class PenjualanController extends Controller
         return redirect('beranda');
     }
 
-    public function transaction(Request $request)
-    {
-        $time = date('h:i a');
-        $user_id = $request->input('user_id');
-        $tanggal_penjualan = $request->input('tanggal_penjualan');
-        $id_barang = $request->input('id_barang');
-        $qty = $request->input('qty');
-        $jumlah_bayar = $request->input('jumlah_bayar');
-        
-        $data = [
-            'time' => $time,
-            'user_id' => $user_id,
-            'tanggal_penjualan' => $tanggal_penjualan,
-            'id_barang' => $id_barang,
-            'qty' => $qty,
-            'jumlah_bayar' => $jumlah_bayar,
-        ];
-        
-        return view('client-side.transaksi', $data);
-    }
+   
 
     /**
      * Display the specified resource.
@@ -118,6 +129,27 @@ class PenjualanController extends Controller
         $jual = Barang::join('detail_pembelian', 'detail_pembelian.id_barang', '=', 'barang.id')->select('barang.nama_barang', 'detail_pembelian.harga_jual') ->where('barang.id', $id)->first();
         $user = auth()->user();
         return view('client-side.penjualan', compact('barang','user','jual'))->with($data);
+    }
+
+    public function transaction(Request $request)
+    {
+        $time = date('h:i a');
+        $user_id = $request->input('user_id');
+        $tanggal_penjualan = $request->input('tanggal_penjualan');
+        $id_barang = $request->input('id_barang');
+        $qty = $request->input('qty');
+        $jumlah_bayar = $request->input('jumlah_bayar');
+        
+        $data = [
+            'time' => $time,
+            'user_id' => $user_id,
+            'tanggal_penjualan' => $tanggal_penjualan,
+            'id_barang' => $id_barang,
+            'qty' => $qty,
+            'jumlah_bayar' => $jumlah_bayar,
+        ];
+        
+        return view('client-side.transaksi', $data);
     }
 
     /**

@@ -26,7 +26,7 @@
                     <label for="pembeli" class="form-label">*Total Bayar</label>
                     <input type="number" class="form-control mb-3" name="jumlah_bayar" id="jmlBayar" value="{{ $jual->harga_jual }}" readonly/>
                     <div class="col-md-6">
-                    <input type="submit" value="Beli Sekarang" class="btn btn-primary">
+                    <input type="submit" value="Bayar Sekarang" class="btn btn-primary">
                     </div>     
                 </div>
             </div>
