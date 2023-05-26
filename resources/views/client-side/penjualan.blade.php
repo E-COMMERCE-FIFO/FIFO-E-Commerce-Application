@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div class="container">
-    <form class="mt-5 mb-3" action="/penjualan/store" method="post" autocomplete="off" enctype="multipart/form-data">
+    <form class="mt-5 mb-3" action="/transaksi/detail" method="post" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div class="card col-md-12 mx-auto mb-5 shadow p-3 bg-white-rounded">
             <div class="row">
@@ -25,7 +25,6 @@
                     </div>
                     <label for="pembeli" class="form-label">*Total Bayar</label>
                     <input type="number" class="form-control mb-3" name="jumlah_bayar" id="jmlBayar" value="{{ $jual->harga_jual }}" readonly/>
-                    <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" class="form-control mb-3"/>
                     <div class="col-md-6">
                     <input type="submit" value="Beli Sekarang" class="btn btn-primary">
                     </div>     

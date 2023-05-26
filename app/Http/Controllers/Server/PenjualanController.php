@@ -10,6 +10,7 @@ use App\Http\Requests\StorePenjualanRequest;
 use App\Http\Requests\UpdatePenjualanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PenjualanController extends Controller
 {
@@ -23,6 +24,15 @@ class PenjualanController extends Controller
         $data = [ 'time' => date('h:i a')];
         $barang = Barang::all();
         return view('client-side.beranda', compact('barang'))->with($data);
+    }
+
+    public function history()
+    {
+        $data = [ 'time' => date('h:i a')];
+        $numb = 1;
+        $userId = Auth::id(); 
+        $history = penjualan::join('barang', 'barang.id', '=', 'penjualan.id_barang')->select('penjualan.*', 'barang.nama_barang')->where('penjualan.user_id', $userId)->get();
+        return view('client-side.history', compact('history','numb'))->with($data);
     }
 
     /**
@@ -44,10 +54,11 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
         $barang = Barang::find($data['id_barang']);
-        $barang->stok = $barang->stok - $data['qty'];
+        $barang->stok -= $data['qty'];
         $barang->save();
-    
+        
         $detailPembelian = DetailPembelian::select('harga_jual')->where('id_barang', $data['id_barang'])->first();
         $hargaJual = $detailPembelian->harga_jual;
         $jumlahBayar = $hargaJual *  $data['qty'];
@@ -61,6 +72,28 @@ class PenjualanController extends Controller
         Penjualan::create($data, $jumlahBayar);
         return redirect('beranda');
     }
+
+    public function transaction(Request $request)
+    {
+        $time = date('h:i a');
+        $user_id = $request->input('user_id');
+        $tanggal_penjualan = $request->input('tanggal_penjualan');
+        $id_barang = $request->input('id_barang');
+        $qty = $request->input('qty');
+        $jumlah_bayar = $request->input('jumlah_bayar');
+        
+        $data = [
+            'time' => $time,
+            'user_id' => $user_id,
+            'tanggal_penjualan' => $tanggal_penjualan,
+            'id_barang' => $id_barang,
+            'qty' => $qty,
+            'jumlah_bayar' => $jumlah_bayar,
+        ];
+        
+        return view('client-side.transaksi', $data);
+    }
+
     /**
      * Display the specified resource.
      *

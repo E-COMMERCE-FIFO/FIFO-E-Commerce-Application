@@ -66,17 +66,3 @@
    </section>
 </main>
 @endsection
-
-{{-- <div class="row">
-   @foreach ($barang as $item)    
-   <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-      <div  class="icon-box shadow-sm">
-         <img src="{{ $item->foto_barang }}" alt="" width="300px">
-         <h6 class="text-center">{{ $item->nama_barang }}</h6>
-         <form action="" method="POST">
-         <a href="{{ route('edit', $item->id) }}" class="btn btn-primary">beli</a>
-      </form>
-      </div>
-   </div>           
-   @endforeach        
-</div> --}}

@@ -20,6 +20,4 @@ class ServerPenjualanController extends Controller
         ->select('penjualan.*', 'users.nama_lengkap', 'barang.nama_barang')->where('penjualan.id', $id)->first();
         return view('server-side.penjualan.show', compact('data'));
     }
-
-   
 }

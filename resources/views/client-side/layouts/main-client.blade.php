@@ -59,7 +59,7 @@
                   </ul>
                </li>
                <li><a href="{{ route('beranda') }}">Cara Belanja</a></li>
-               <li><a href="{{ route('beranda') }}">Riwayat Pembelian</a></li>
+               <li><a href="{{ route('history') }}">Riwayat Pembelian</a></li>
                <li><a href="{{ url('/login') }}">Masuk</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
