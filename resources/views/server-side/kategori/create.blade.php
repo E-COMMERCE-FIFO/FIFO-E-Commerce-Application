@@ -30,9 +30,9 @@
                                   type="text"
                                   class="form-control"
                                   id="inputKtg"
-                                  name="nama_kategori"
+                                  name="kategori"
                               />
-                              @error('nama_kategori')
+                              @error('kategori')
                                 <strong class="fw-bold d-block text-danger mt-2">
                                   <small>&nbsp;* {{ $message }}</small>
                                 </strong>

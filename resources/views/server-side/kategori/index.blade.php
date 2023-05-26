@@ -38,24 +38,22 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">Kategori</th>
                     <th scope="col">Nama Kategori</th>
-                    <th scope="col">Stok</th>
+                    <th scope="col">Nama Kategori</th>
                     <th scope="col">Pengaturan</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {{-- @forelse ($kategori as $item)
+                  @forelse ($kategori as $item)
                     <tr>
                       <th scope="row">{{ $numb++ }}</th>
                       <td>{{ $item->kategori }}</td>
-                      <td>{{ $item->nama_Kategori }}</td>
-                      <td>{{ $item->stok }}</td>
+                      <td>{{ $item->id }}</td>
                       <td>
                         <form action="{{ route('kategori-activity.destroy', $item->id) }}" method="post">
                           @csrf
                           @method('delete')
-                          <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus Kategori ini?')">hapus</button>
+                          <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus kategori ini?')">hapus</button>
                         </form>
                       </td>
                     </tr>
@@ -64,7 +62,7 @@
                       <i class="bi bi-exclamation-octagon me-1"></i> Belum ada data Kategori!
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                  @endforelse --}}
+                  @endforelse
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

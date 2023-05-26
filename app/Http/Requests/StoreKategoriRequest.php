@@ -13,7 +13,7 @@ class StoreKategoriRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StoreKategoriRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kategori' => 'required|regex:/^[a-zA-Z0-9\s]+$/',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'kategori.required' => 'Nama kategori harus diisi!',
         ];
     }
 }

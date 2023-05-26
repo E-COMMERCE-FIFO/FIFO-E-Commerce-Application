@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Http\Requests\StoreKategoriRequest;
 use App\Http\Requests\UpdateKategoriRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class KategoriController extends Controller
 {
@@ -16,7 +17,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('server-side.kategori.index');
+        $numb = 1;
+        $kategori = Kategori::all();
+        return view('server-side.kategori.index', compact(['numb', 'kategori']));
     }
 
     /**
@@ -37,7 +40,9 @@ class KategoriController extends Controller
      */
     public function store(StoreKategoriRequest $request)
     {
-        //
+        $data = $request->all();
+        Kategori::create($data);
+        return Redirect::route('kategori-activity.index')->with('message', 'Barang berhasil ditambahkan.');
     }
 
     /**
@@ -82,6 +87,7 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
-        //
+        Kategori::find($kategori->id)->delete();
+        return Redirect::route('kategori-activity.index')->with('message', 'Data berhasil dihapus.');
     }
 }
