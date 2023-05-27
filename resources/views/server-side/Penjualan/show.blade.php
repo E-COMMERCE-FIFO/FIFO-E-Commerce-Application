@@ -38,7 +38,25 @@
                             <tr>
                                 <th scope="col">Total Bayar</th>
                                 <td class="col-md-8">{{ $data->jumlah_bayar }}</td>
-                            </tr>        
+                            </tr> 
+                            <tr>
+                                <th scope="col">Status Pembelian</th>                    
+                                <td class="col-md-8">
+                                    <div class="d-flex justify-content-md-between">
+                                        @if($data->status == 'Sukses')
+                                        <p class="badge bg-success mt-2">{{ $data->status }}<p>                                        @else
+                                            <p class="badge bg-primary mt-1">{{ $data->status }}</p>
+                                            <form action="{{ url('penjualan/update/'. $data->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="status" value="Sukses">
+                                                <button type="submit" class="btn btn-success"><i class="bi bi-check-square-fill"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
                         <div class="mb-4">
                         <h4 class="text-center">Bukti Transfer</h4>

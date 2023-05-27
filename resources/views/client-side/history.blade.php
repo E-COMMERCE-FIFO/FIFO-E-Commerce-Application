@@ -5,7 +5,7 @@
 <div class="container">
     <h4 class="text-center mb-4 mt-4">Riwayat Pembelian {{ Auth::user()->nama_lengkap }}</h4>
     <div class="card mb-3 mt-3">
-<table class="table">
+<table class="table text-center p">
     <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
@@ -17,13 +17,21 @@
       </tr>
     </thead>
     <tbody>
-       @foreach ($history as $item)
+       @foreach ($history->reverse() as $item)
        <tr>
         <th scope="row">{{ $numb++ }}</th>
         <td>{{ $item->nama_barang }}</td>
         <td>{{ $item->qty }}</td>
         <td>{{ $item->jumlah_bayar }}</td>
-        <td>{{ $item->status }}</td>
+        @if($item->status == 'Sukses')
+        <td class="">
+          <p class="badge bg-success">{{ $item->status }}<p>     
+          </td>
+        @else
+        <td>
+          <p class="badge bg-primary">{{ $item->status }}<p>    
+          </td> 
+        @endif
       </tr>
        @endforeach 
       

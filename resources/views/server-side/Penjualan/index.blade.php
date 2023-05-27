@@ -37,13 +37,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @forelse ($penjualan as $item)
+                  @forelse ($penjualan->reverse() as $item)
                     <tr>
                       <th scope="row">{{  $number++ }}</th>
                         <td>{{ $item->tanggal_penjualan }}</td>
                         <td>{{ $item->nama_lengkap }}</td>
                         <td>
-                          <a href="{{ url ($item->id.'/detail') }}" class="badge bg-success">Detail</a>
+                          <a href="{{ url ($item->id.'/detail') }}" class="badge bg-info text-white">Detail</a>
                         </td>
                     </tr>
                   @empty

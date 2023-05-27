@@ -44,7 +44,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @forelse ($pembelian as $item)
+                  @forelse ($pembelian->reverse() as $item)
                     <tr>
                       <th scope="row">{{ $numb++ }}</th>
                       <td>{{ $item->tgl_pembelian }}</td>

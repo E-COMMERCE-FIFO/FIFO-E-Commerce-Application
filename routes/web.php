@@ -67,6 +67,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/penjualan', [ServerPenjualanController::class, 'index']);
     Route::delete('/penjualan/{id}', [ServerPenjualanController::class, 'destroy']);
     Route::get('/{id}/detail', [ServerPenjualanController::class, 'show']);
+    Route::put('penjualan/update/{id}', [PenjualanController::class, 'updateStatus']);
+
 
     
     // ? ROUTE BREEZE 

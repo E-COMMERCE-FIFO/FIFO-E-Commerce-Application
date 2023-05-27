@@ -11,7 +11,9 @@ class ServerPenjualanController extends Controller
 
     public function index () {
         $number = 1;
-        $penjualan = Penjualan::join('users', 'users.id', '=', 'penjualan.user_id')->select('users.nama_lengkap', 'penjualan.tanggal_penjualan','penjualan.id')->get();
+        $penjualan = Penjualan::join('users', 'users.id', '=', 'penjualan.user_id')->select('users.nama_lengkap', 'penjualan.tanggal_penjualan','penjualan.id')
+        ->orderBy('penjualan.tanggal_penjualan', 'desc')
+        ->get();
         return view('server-side.penjualan.index', compact('penjualan', 'number'));
     }
 

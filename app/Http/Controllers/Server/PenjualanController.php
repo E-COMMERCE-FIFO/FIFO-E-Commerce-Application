@@ -35,7 +35,9 @@ class PenjualanController extends Controller
         $data = [ 'time' => date('h:i a')];
         $numb = 1;
         $userId = Auth::id(); 
-        $history = penjualan::join('barang', 'barang.id', '=', 'penjualan.id_barang')->select('penjualan.*', 'barang.nama_barang')->where('penjualan.user_id', $userId)->get();
+        $history = penjualan::join('barang', 'barang.id', '=', 'penjualan.id_barang')->select('penjualan.*', 'barang.nama_barang')->where('penjualan.user_id', $userId)
+        ->orderBy('penjualan.tanggal_penjualan', 'desc')
+        ->get();
         return view('client-side.history', compact('history','numb'))->with($data);
     }
 
@@ -159,9 +161,13 @@ class PenjualanController extends Controller
      * @param  \App\Models\Penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePenjualanRequest $request, Penjualan $penjualan)
+    public function updateStatus(Request $request, $id)
     {
-        //
+        $penjualan = Penjualan::find($id);
+       
+        $penjualan->status = $request->input('status');
+        $penjualan->save();
+        return redirect()->back()->with('success');
     }
 
     /**
