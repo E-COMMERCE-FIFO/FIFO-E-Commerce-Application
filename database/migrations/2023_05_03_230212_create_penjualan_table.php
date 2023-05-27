@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('jumlah_bayar');
             $table->integer('qty');
             $table->foreignId('id_barang')->constrained('barang');
-            $table->string('bukti_pembayaran');
+            $table->string('bukti_pembayaran')->nullable();
             $table->string('status')->default('Pending');
             $table->timestamps();
         });

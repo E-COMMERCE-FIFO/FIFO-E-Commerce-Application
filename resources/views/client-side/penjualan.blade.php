@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div class="container">
-    <form class="mt-5 mb-3" action="/transaksi/detail" method="post" autocomplete="off" enctype="multipart/form-data">
+    <form class="mt-5 mb-3" action="/penjualan/store" method="post" autocomplete="off" enctype="multipart/form-data">
         @csrf
         <div class="card col-md-12 mx-auto mb-5 shadow p-3 bg-white-rounded">
             <div class="row">
@@ -12,8 +12,7 @@
                 </div>
                 <div class="col-md-6">
                     <h3 class="text-center"> {{ $barang->nama_barang }} </h3>
-                    <label for="pembeli" class="form-label">*Nama</label>
-                    <input type="text" class="form-control mb-3" value="{{ Auth::user()->nama_lengkap }}" readonly/>
+                    <input type="hidden" class="form-control mb-3" value="{{ Auth::user()->nama_lengkap }}" readonly/>
                     <input type="hidden" class="form-control" id="pembeli" name="user_id" value="{{ Auth::user()->id }}"/>
                     <input type="hidden" class="form-control mb-3" name="tanggal_penjualan" value="{{ date('Y-m-d') }}" />
                     <input type="hidden" class="form-control mb-3" name="id_barang" value="{{ $barang->id }}"/>

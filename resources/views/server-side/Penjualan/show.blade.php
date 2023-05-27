@@ -44,7 +44,10 @@
                                 <td class="col-md-8">
                                     <div class="d-flex justify-content-md-between">
                                         @if($data->status == 'Sukses')
-                                        <p class="badge bg-success mt-2">{{ $data->status }}<p>                                        @else
+                                        <p class="badge bg-success mt-2">{{ $data->status }}<p>
+                                        @elseif($data->bukti_pembayaran == '')
+                                            <p class="badge bg-danger">Menunggu Pembayaran<p>
+                                        @else
                                             <p class="badge bg-primary mt-1">{{ $data->status }}</p>
                                             <form action="{{ url('penjualan/update/'. $data->id) }}" method="post">
                                                 @csrf

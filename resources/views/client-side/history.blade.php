@@ -23,14 +23,20 @@
         <td>{{ $item->nama_barang }}</td>
         <td>{{ $item->qty }}</td>
         <td>{{ $item->jumlah_bayar }}</td>
-        @if($item->status == 'Sukses')
+        @if($item->status == 'Sukses' )
         <td class="">
           <p class="badge bg-success">{{ $item->status }}<p>     
           </td>
+        @elseif($item->bukti_pembayaran == '')
+        <td>
+          <a href="{{ url('/upload/' . $item->id) }}" class="badge bg-danger">Upload Bukti</a>
+        </td>
+        
         @else
         <td>
           <p class="badge bg-primary">{{ $item->status }}<p>    
-          </td> 
+        </td>
+
         @endif
       </tr>
        @endforeach 

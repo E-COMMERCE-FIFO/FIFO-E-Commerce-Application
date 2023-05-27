@@ -95,17 +95,41 @@ class PenjualanController extends Controller
         $hargaJual = $detailPembelian->harga_jual;
         $jumlahBayar = $hargaJual *  $data['qty'];
 
-        $fotoBarang = $data['bukti_pembayaran'];
-        $namaFile = $data['user_id'] . '_' . $fotoBarang->getClientOriginalName();
-        $fotoBarang->storeAs('public/bukti_pembayaran', $namaFile);
-        $data['bukti_pembayaran'] = $namaFile;
-
-        
-        Penjualan::create($data, $jumlahBayar);
-        return redirect('beranda');
+        if ($request->hasFile('bukti_pembayaran')) {
+            $fotoBarang = $data['bukti_pembayaran'];
+            $namaFile = $data['user_id'] . '_' . $fotoBarang->getClientOriginalName();
+            $fotoBarang->storeAs('public/bukti_pembayaran', $namaFile);
+            $data['bukti_pembayaran'] = $namaFile;
+        } else {
+            $data['bukti_pembayaran'] = null;
+        }     
+        $penjualan=Penjualan::create($data, $jumlahBayar);
+        $idPenjualan = $penjualan->id;
+        return redirect('upload/'. $idPenjualan);
     }
 
-   
+    public function upload($id)
+    {
+        $data = [ 'time' => date('h:i a')];
+        $penjualan = Penjualan::find($id);
+        return view('client-side.upload', compact('penjualan')) ->with($data);
+    }
+
+    public function uploadBukti(Request $request, $id)
+    {
+        $data = $request->all();
+        $penjualan = Penjualan::find($id);
+        if ($request->hasFile('bukti_pembayaran')) {
+            $fotoBarang = $data['bukti_pembayaran'];
+            $namaFile = $fotoBarang->getClientOriginalName();
+            $fotoBarang->storeAs('public/bukti_pembayaran', $namaFile);
+            $data['bukti_pembayaran'] = $namaFile;
+        } else {
+            $data['bukti_pembayaran'] = null;
+        }     
+        $penjualan->update($data);
+        return redirect('history');
+    }
 
     /**
      * Display the specified resource.
@@ -115,7 +139,7 @@ class PenjualanController extends Controller
      */
     public function show(Penjualan $penjualan)
     {
-       
+    
     }
 
     /**
@@ -133,26 +157,6 @@ class PenjualanController extends Controller
         return view('client-side.penjualan', compact('barang','user','jual'))->with($data);
     }
 
-    public function transaction(Request $request)
-    {
-        $time = date('h:i a');
-        $user_id = $request->input('user_id');
-        $tanggal_penjualan = $request->input('tanggal_penjualan');
-        $id_barang = $request->input('id_barang');
-        $qty = $request->input('qty');
-        $jumlah_bayar = $request->input('jumlah_bayar');
-        
-        $data = [
-            'time' => $time,
-            'user_id' => $user_id,
-            'tanggal_penjualan' => $tanggal_penjualan,
-            'id_barang' => $id_barang,
-            'qty' => $qty,
-            'jumlah_bayar' => $jumlah_bayar,
-        ];
-        
-        return view('client-side.transaksi', $data);
-    }
 
     /**
      * Update the specified resource in storage.
@@ -164,7 +168,6 @@ class PenjualanController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $penjualan = Penjualan::find($id);
-       
         $penjualan->status = $request->input('status');
         $penjualan->save();
         return redirect()->back()->with('success');

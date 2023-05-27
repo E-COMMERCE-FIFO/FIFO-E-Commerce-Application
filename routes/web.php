@@ -32,9 +32,9 @@ Route::get('/', function () {
 Route::get('/beranda', [PenjualanController::class, 'index'])->name('beranda');
 Route::get('/edit/{item}', [PenjualanController::class, 'edit'])->name('edit');
 Route::post('/penjualan/store', [PenjualanController::class, 'store'])->name('store');
-Route::get('/transaksi', [PenjualanController::class, 'transaction'])->name('transaction');
-Route::post('/transaksi/detail', [PenjualanController::class, 'transaction'])->name('transaction');
 Route::get('/history', [PenjualanController::class, 'history'])->name('history');
+route::get('/upload/{id}', [PenjualanController::class, 'upload'])->name('upload');
+route::put('/upload/bukti/{id}', [PenjualanController::class, 'uploadBukti'])->name('uploadBukti');
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
 

@@ -24,7 +24,7 @@ class PembelianController extends Controller
         $numb = 1;
         $pembelian = Pembelian::join('users', 'pembelian.user_id', '=', 'users.id')
         ->select('pembelian.*', 'users.nama_lengkap')
-        ->orderBy('pembelian.tgl_pembelian', 'desc')
+        ->orderBy('pembelian.tgl_pembelian', 'asc')
         ->get();
         return view('server-side.pembelian.index', compact('numb', 'pembelian'));
     }
