@@ -2225,7 +2225,15 @@ section {
 }
 a.my-href-link:hover {
   color: white;
+  cursor: pointer;
 }
 .bg-orange-style {
   background-color: #e6573f;
+}
+.box-image-barang {
+  height: 240px;
+  overflow: hidden;
+}
+.box-image-barang img {
+  height: 240px;
 }

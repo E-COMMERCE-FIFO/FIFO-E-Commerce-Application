@@ -189,4 +189,19 @@ class PenjualanController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Penjualan  $penjualan
+     * @return \Illuminate\Http\Response
+     */
+    public function showDetailKategori($id_kategori)
+    {
+        $data = ['time' => date('h:i a')];
+        $getBarangByKategori = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id')
+        ->select('barang.*', 'kategori.kategori')
+        ->where('kategori', $id_kategori)->get();
+        return view('client-side.kategori-barang', compact('getBarangByKategori'))->with($data);
+    }
 }

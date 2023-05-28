@@ -33,8 +33,9 @@ Route::get('/beranda', [PenjualanController::class, 'index'])->name('beranda');
 Route::get('/edit/{item}', [PenjualanController::class, 'edit'])->name('edit');
 Route::post('/penjualan/store', [PenjualanController::class, 'store'])->name('store');
 Route::get('/history', [PenjualanController::class, 'history'])->name('history');
-route::get('/upload/{id}', [PenjualanController::class, 'upload'])->name('upload');
-route::put('/upload/bukti/{id}', [PenjualanController::class, 'uploadBukti'])->name('uploadBukti');
+Route::get('/upload/{id}', [PenjualanController::class, 'upload'])->name('upload');
+Route::get('/list-barang/{id_kategori}', [PenjualanController::class, 'showDetailKategori'])->name('kategori-barang-activity');
+Route::put('/upload/bukti/{id}', [PenjualanController::class, 'uploadBukti'])->name('uploadBukti');
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
 

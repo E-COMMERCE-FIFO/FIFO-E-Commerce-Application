@@ -52,10 +52,9 @@
                      <span>Katalog Produk</span> <i class="bi bi-chevron-down"></i>
                   </a>
                   <ul>
-                     <li><a href="#">Drop Down 1</a></li>
-                     <li><a href="#">Drop Down 2</a></li>
-                     <li><a href="#">Drop Down 3</a></li>
-                     <li><a href="#">Drop Down 4</a></li>
+                     @foreach (App\Models\Kategori::all() as $item)
+                        <li><a href="{{ route('kategori-barang-activity', $item->kategori) }}">{{ $item->kategori }}</a></li>
+                     @endforeach
                   </ul>
                </li>
                <li><a href="{{ route('beranda') }}">Cara Belanja</a></li>

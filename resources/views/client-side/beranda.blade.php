@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-12 text-center">
                @forelse ($kategori as $kategoriitem)
-                  <a class="badge bg-orange-style text-lowercase my-href-link">{{ $kategoriitem->kategori }}</a>
+                  <a href="{{ route('kategori-barang-activity', $kategoriitem->kategori) }}" class="badge bg-orange-style text-lowercase my-href-link">{{ $kategoriitem->kategori }}</a>
                @empty
                   <h4>Belum ada kategori yang bisa ditampilkan!</h4>
                @endforelse
@@ -70,10 +70,14 @@
                            <div class="description">
                               <h2>Stok Habis</h2>
                            </div>
-                           <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                           <div class="box-image-barang">
+                              <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                           </div>
                         </div>
                         @else
-                        <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                        <div class="box-image-barang">
+                           <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                        </div>
                         @endif
                         <div class="card-body">
                            <h4 class="text-center mb-3">{{ $item->nama_barang }}</h4>
