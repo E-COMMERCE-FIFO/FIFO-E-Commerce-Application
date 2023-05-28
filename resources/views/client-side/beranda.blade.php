@@ -47,29 +47,50 @@
    <section id="services" class="services">
       <div class="container">
          <div class="row">
-            @foreach ($barang as $item)
-            <div class="col-md-4 mb-3">
-               <div class="card text-center" data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
-                  @if($item->stok == 'kosong')
-                  <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
-                  @else
-                  <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap"> 
-                  @endif
-                  <div class="card-body">
-                     <h6 class="text-center mb-4">{{ $item->nama_barang }}</h6>
-                     @if ($item->stok == 'kosong')
-                     <a href="#" class="btn btn-primary disabled">Beli Sekarang</a>
-                     @else
-                     @auth
-                   
-                     <a href="{{ route('edit', $item->id) }}" class="btn btn-primary">Beli Sekarang</a>
-                     @else
-                     <a href="{{ route('login') }}" class="btn btn-primary">Beli Sekarang</a>
-                     @endauth
-                     @endif
-                  </div>
-               </div>
+            <div class="col-md-12">
+               <h2 class="text-center">Pilihan Kategori Barang Terbaik untuk Anda</h2>
             </div>
+            <div class="col-md-12 text-center">
+               @forelse ($kategori as $kategoriitem)
+                  <a class="badge bg-orange-style text-lowercase my-href-link">{{ $kategoriitem->kategori }}</a>
+               @empty
+                  <h4>Belum ada kategori yang bisa ditampilkan!</h4>
+               @endforelse
+            </div>
+
+            @foreach ($barangByKategori as $kategoriName => $splitBarang)
+               <div class="col-md-12 mt-5">
+                  <h4>Kategori {{ $kategoriName }}</h4><hr class="mb-3">
+               </div>
+               @foreach ($splitBarang as $item)
+                  <div class="col-md-4 mb-3">
+                     <div class="card text-center" data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
+                        @if($item->stok == 0)
+                        <div class="stock-is-null">
+                           <div class="description">
+                              <h2>Stok Habis</h2>
+                           </div>
+                           <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                        </div>
+                        @else
+                        <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                        @endif
+                        <div class="card-body">
+                           <h4 class="text-center mb-3">{{ $item->nama_barang }}</h4>
+                           @if ($item->stok == 0)
+                           <a href="#" class="btn btn-danger w-100 disabled">Beli Sekarang</a>
+                           @else
+                           @auth
+                        
+                           <a href="{{ route('edit', $item->id) }}" class="btn btn-primary w-100">Beli Sekarang</a>
+                           @else
+                           <a href="{{ route('login') }}" class="btn btn-primary w-100">Beli Sekarang</a>
+                           @endauth
+                           @endif
+                        </div>
+                     </div>
+                  </div>
+               @endforeach
             @endforeach
          </div>
       </div>

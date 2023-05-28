@@ -2209,3 +2209,23 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+/* My Style */
+
+.card .stock-is-null img {
+  filter: brightness(40%);
+}
+.card .stock-is-null .description {
+  z-index: 100;
+  color: rgb(187, 187, 187);
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+a.my-href-link:hover {
+  color: white;
+}
+.bg-orange-style {
+  background-color: #e6573f;
+}

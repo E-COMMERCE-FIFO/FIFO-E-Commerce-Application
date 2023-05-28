@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\DetailPembelian;
 use App\Http\Requests\StorePenjualanRequest;
 use App\Http\Requests\UpdatePenjualanRequest;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -22,12 +23,17 @@ class PenjualanController extends Controller
     public function index()
     {
         $data = [ 'time' => date('h:i a')];
-        $barang = Barang::all();
-        foreach($barang as $item){
-            $item->stok = ($item->stok > 0) ? 'tersedia' : 'kosong';
+        $kategori = Kategori::all();
+
+        $barangByKategori = [];
+        foreach ($kategori as $getKategori) {
+            $splitBarang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id')
+            ->select('barang.*', 'kategori.kategori')
+            ->where('id_kategori', $getKategori->id)->get();
+            $barangByKategori[$getKategori->kategori] = $splitBarang;
         }
         
-        return view('client-side.beranda', compact('barang'))->with($data);
+        return view('client-side.beranda', compact(['kategori', 'barangByKategori']))->with($data);
     }
 
     public function history()
