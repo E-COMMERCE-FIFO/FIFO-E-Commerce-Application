@@ -27,7 +27,7 @@
             <i class="bi bi-geo-alt-fill d-flex align-items-center">
                <a href="mailto:contact@example.com">Kel. Blindungan, Bondowoso, Jawa Timur 68212</a>
             </i>
-            <i class="bi bi-alarm d-flex align-items-center ms-4"><span>{{ $time }}</span></i>
+            <i class="bi bi-alarm d-flex align-items-center ms-4"><span>09.00 - 22.00</span></i>
             <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 877-5917-4130</span></i>
          </div>
          <div class="social-links d-none d-md-flex align-items-center">
