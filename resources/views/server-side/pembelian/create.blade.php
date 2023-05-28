@@ -19,6 +19,12 @@
               <div class="card">
                   <div class="card-body">
                       <h5 class="card-title">Lengkapi data transaksi pembelian di bawah ini!</h5>
+                      @if (Session::has('error'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          <i class="bi bi-cart-x me-1"></i> {{ Session::get('error') }}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      @endif
                       <!-- Vertical Form -->
                       <form class="row g-3" action="{{ route('pembelian-activity.store') }}" method="post" autocomplete="off">
                         @csrf
@@ -87,6 +93,7 @@
                               <input
                                   type="number"
                                   class="form-control"
+                                  min="1"
                                   id="jlmBeli"
                                   name="jumlah_pembelian[]"
                                   required
@@ -102,6 +109,7 @@
                               <input
                                   type="number"
                                   class="form-control"
+                                  min="1"
                                   id="hargaBeli"
                                   name="harga_beli[]"
                                   required
@@ -117,6 +125,7 @@
                               <input
                                   type="number"
                                   class="form-control"
+                                  min="1"
                                   id="hargaJual"
                                   name="harga_jual[]"
                                   required
