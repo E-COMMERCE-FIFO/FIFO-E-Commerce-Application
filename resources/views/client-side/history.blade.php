@@ -36,17 +36,13 @@
           <input type="submit" value="Hapus" class="btn btn-primary">
         </form>
         </td>
-        
         @else
         <td>
-          <p class="badge bg-primary">{{ $item->status }}<p>   
-          
+          <p class="badge bg-primary">{{ $item->status }}<p>         
         </td>
-
         @endif
       </tr>
-       @endforeach 
-      
+       @endforeach     
     </tbody>
   </table>
 </div>

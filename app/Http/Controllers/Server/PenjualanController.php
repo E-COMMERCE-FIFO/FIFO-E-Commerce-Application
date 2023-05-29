@@ -71,14 +71,6 @@ class PenjualanController extends Controller
         $hargaJual = $detailPembelian->harga_jual;
         $jumlahBayar = $hargaJual *  $data['qty'];
 
-        if ($request->hasFile('bukti_pembayaran')) {
-            $fotoBarang = $data['bukti_pembayaran'];
-            $namaFile = $data['user_id'] . '_' . $fotoBarang->getClientOriginalName();
-            $fotoBarang->storeAs('public/bukti_pembayaran', $namaFile);
-            $data['bukti_pembayaran'] = $namaFile;
-        } else {
-            $data['bukti_pembayaran'] = null;
-        }     
         $penjualan=Penjualan::create($data, $jumlahBayar);
         $idPenjualan = $penjualan->id;
         return redirect('upload/'. $idPenjualan);
