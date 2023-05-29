@@ -59,44 +59,41 @@
             </div>
 
             @foreach ($barangByKategori as $kategoriName => $splitBarang)
-               <div class="col-md-12 d-flex justify-content-between align-content-center mt-5">
-                  <h4>Kategori {{ $kategoriName }}</h4>
-                  <a href="{{ route('kategori-barang-activity', $kategoriName) }}">
-                     <strong>Lihat selengkapnya</strong>
-                  </a>
-               </div><hr class="mb-3">
-               @foreach ($splitBarang->take(3) as $item)
-               <div class="col-md-4 mb-3">
-                  <div class="card text-center" data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
-                     @if($item->stok == 0)
-                     <div class="stock-is-null">
-                        <div class="description">
-                           <h2>Stok Habis</h2>
+               <div class="col-md-12 mt-5">
+                  <h4>Kategori {{ $kategoriName }}</h4><hr class="mb-3">
+               </div>
+               @foreach ($splitBarang as $item)
+                  <div class="col-md-4 mb-3">
+                     <div class="card text-center" data-aos="fade-up"  data-aos-anchor-placement="top-bottom">
+                        @if($item->stok == 0)
+                        <div class="stock-is-null">
+                           <div class="description">
+                              <h2>Stok Habis</h2>
+                           </div>
+                           <div class="box-image-barang">
+                              <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                           </div>
                         </div>
+                        @else
                         <div class="box-image-barang">
-                           <img class="card-img-top bg-danger" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
+                           <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
                         </div>
-                     </div>
-                     @else
-                     <div class="box-image-barang">
-                        <img class="card-img-top" src="{{ Storage::url('public/barang/') . $item->foto_barang }}" alt="Card image cap">
-                     </div>
-                     @endif
-                     <div class="card-body">
-                        <h4 class="text-center mb-3">{{ $item->nama_barang }}</h4>
-                        @if ($item->stok == 0)
-                        <a href="#" class="btn btn-danger w-100 disabled">Beli Sekarang</a>
-                        @else
-                        @auth
-                     
-                        <a href="{{ route('edit', $item->id) }}" class="btn btn-primary w-100">Beli Sekarang</a>
-                        @else
-                        <a href="{{ route('login') }}" class="btn btn-primary w-100">Beli Sekarang</a>
-                        @endauth
                         @endif
+                        <div class="card-body">
+                           <h4 class="text-center mb-3">{{ $item->nama_barang }}</h4>
+                           @if ($item->stok == 0)
+                           <a href="#" class="btn btn-danger w-100 disabled">Beli Sekarang</a>
+                           @else
+                           @auth
+                        
+                           <a href="{{ route('edit', $item->id) }}" class="btn btn-primary w-100">Beli Sekarang</a>
+                           @else
+                           <a href="{{ route('login') }}" class="btn btn-primary w-100">Beli Sekarang</a>
+                           @endauth
+                           @endif
+                        </div>
                      </div>
                   </div>
-               </div>
                @endforeach
             @endforeach
          </div>

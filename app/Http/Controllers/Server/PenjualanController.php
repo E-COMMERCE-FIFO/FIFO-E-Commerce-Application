@@ -66,36 +66,6 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
-        $barang = Barang::find($data['id_barang']);
-        $barang->stok -= $data['qty'];
-        $barang->save();
-
-        $jumlahQty = $data['qty'];
-        $produkIndex = 0;
-        
-        while ($jumlahQty > 0) {
-            $produk = DetailPembelian::where('id_barang', $data['id_barang'])->skip($produkIndex)->first();
-            
-            if ($produk) {
-                $stokAwal = $produk->jumlah_pembelian;
-                $jumlahPembelianBaru = $stokAwal - $jumlahQty;
-                
-                if ($jumlahPembelianBaru >= 0) {
-                    $produk->jumlah_pembelian = $jumlahPembelianBaru;
-                    $produk->save();
-                    $jumlahQty = 0;
-                } else {
-                    $produk->jumlah_pembelian = 0;
-                    $produk->save();
-                    $jumlahQty -= $stokAwal;
-                    $produkIndex++;
-                }
-            } else {
-                echo "Tidak ada produk yang tersedia.";
-                break;
-            }
-        }
         
         $detailPembelian = DetailPembelian::select('harga_jual')->where('id_barang', $data['id_barang'])->first();
         $hargaJual = $detailPembelian->harga_jual;
@@ -174,7 +144,38 @@ class PenjualanController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $penjualan = Penjualan::find($id);
+
+        // kurangi stok barang
+        $barang = Barang::find($penjualan->id_barang);
+        $barang->stok = $barang->stok - $penjualan->qty;
+        $barang->save();
+
+        // kurangi stok detail barang
+        $jumlahQty = $penjualan->qty;
+        $produkIndex = 0;
+
+        while($jumlahQty > 0) {
+            $produk = DetailPembelian::where('id_barang', $penjualan->id_barang)->skip($produkIndex)->first();
+
+            if($produk) {
+                $stokAwal = $produk->jumlah_pembelian;
+                $jumlahPembelianbaru = $stokAwal - $jumlahQty;
+
+                if($jumlahPembelianbaru >= 0) {
+                    $produk->jumlah_pembelian = $jumlahPembelianbaru;
+                    $produk->save();
+                    $jumlahQty = 0;
+                } else {
+                    $produk->jumlah_pembelian = 0;
+                    $produk->save();
+                    $jumlahQty = $jumlahQty - $stokAwal;
+                    $produkIndex++;
+                }
+            } 
+        }
+    
         $penjualan->status = $request->input('status');
+
         $penjualan->save();
         return redirect()->back()->with('success');
     }
@@ -185,10 +186,14 @@ class PenjualanController extends Controller
      * @param  \App\Models\Penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Penjualan $penjualan)
-    {
-        //
-    }
+
+     public function destroy($id)
+     {
+         $penjualan = Penjualan::find($id);
+
+        $penjualan->delete();
+         return redirect()->back()->with('success');
+     }
 
     /**
      * Remove the specified resource from storage.

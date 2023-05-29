@@ -52,6 +52,10 @@
                                             <form action="{{ url('penjualan/update/'. $data->id) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
+                                                <input type="hidden" name="nama_lengkap" value="{{ $data->nama_lengkap }}">
+                                                <input type="hidden" name="nama_barang" value="{{ $data->nama_barang }}">
+                                                <input type="hidden" name="qty" value="{{ $data->qty }}">
+
                                                 <input type="hidden" name="status" value="Sukses">
                                                 <button type="submit" class="btn btn-success"><i class="bi bi-check-square-fill"></i>
                                                 </button>

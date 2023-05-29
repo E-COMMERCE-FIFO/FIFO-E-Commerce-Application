@@ -5,7 +5,7 @@
 <div class="container">
     <h4 class="text-center mb-4 mt-4">Riwayat Pembelian {{ Auth::user()->nama_lengkap }}</h4>
     <div class="card mb-3 mt-3">
-<table class="table text-center p">
+<table class="table text-center">
     <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
@@ -24,17 +24,23 @@
         <td>{{ $item->qty }}</td>
         <td>{{ $item->jumlah_bayar }}</td>
         @if($item->status == 'Sukses' )
-        <td class="">
-          <p class="badge bg-success">{{ $item->status }}<p>     
-          </td>
-        @elseif($item->bukti_pembayaran == '')
         <td>
-          <a href="{{ url('/upload/' . $item->id) }}" class="badge bg-danger">Upload Bukti</a>
+          <p class="badge bg-success">{{ $item->status }}<p>     
+        </td>
+        @elseif($item->bukti_pembayaran == '')
+        <td class="d-flex  justify-content-center align-content-center gap-2">
+          <a href="{{ url('/upload/' . $item->id) }}" class="btn btn-danger ">Upload Bukti</a>
+          <form action="/delete/{{ $item->id }}"  method="post">
+            @method('delete')
+            @csrf
+          <input type="submit" value="Hapus" class="btn btn-primary">
+        </form>
         </td>
         
         @else
         <td>
-          <p class="badge bg-primary">{{ $item->status }}<p>    
+          <p class="badge bg-primary">{{ $item->status }}<p>   
+          
         </td>
 
         @endif
