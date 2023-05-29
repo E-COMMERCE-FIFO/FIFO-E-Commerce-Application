@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('jumlah_pembelian');
             $table->integer('harga_beli');
             $table->integer('harga_jual');
+            $table->integer('jumlah_harga');
             $table->foreignId('id_supplier')->constrained('supplier');
             $table->timestamps();
         });

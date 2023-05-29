@@ -32,6 +32,7 @@
                   <th scope="col">Penambahan Stok</th>
                   <th scope="col">Harga Beli</th>
                   <th scope="col">Harga Jual</th>
+                  <th scope="col">Total Harga</th>
                   <th scope="col">Supplier</th>
                 </tr>
                 @foreach ($detail as $detail)
@@ -41,6 +42,7 @@
                     <td>{{ $detail->jumlah_pembelian }}</td>
                     <td>{{ $detail->harga_beli }}</td>
                     <td>{{ $detail->harga_jual }}</td>
+                    <td>{{ $detail->jumlah_harga }}</td>
                     <td>{{ $detail->nama_supplier }}</td>
                   </tr>
                 @endforeach

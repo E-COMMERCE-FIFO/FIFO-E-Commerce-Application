@@ -76,6 +76,7 @@ class PembelianController extends Controller
                             'jumlah_pembelian' => $data['jumlah_pembelian'][$key],
                             'harga_beli' => $data['harga_beli'][$key],
                             'harga_jual' => $data['harga_jual'][$key],
+                            'jumlah_harga' => $data['harga_beli'][$key]*$data['jumlah_pembelian'][$key],
                             'id_supplier' => $data['id_supplier'][$key]
                         );
                         $refreshstok = Barang::find($data['id_barang'][$key])->stok + $data['jumlah_pembelian'][$key];
