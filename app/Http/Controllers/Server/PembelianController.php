@@ -9,6 +9,7 @@ use App\Models\Pembelian;
 use App\Models\Supplier;
 use App\Http\Requests\StorePembelianRequest;
 use App\Http\Requests\UpdatePembelianRequest;
+use App\Models\LaporanPembelian;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -51,36 +52,42 @@ class PembelianController extends Controller
     public function store(StorePembelianRequest $request)
     {
         $data = $request->all();
+        $isUntung = true;
         if (count($data['id_barang']) > 0) {
             foreach ($data['id_barang'] as $inx => $value) {
-                $perhitungan = $data['harga_jual'][$inx] * $data['jumlah_pembelian'][$inx];
-                echo "<h2>$perhitungan</h2>";
-                if ($perhitungan < $data['harga_beli'][$inx]) {
-                    return Redirect::route('pembelian-activity.create')->with('error', 'Harga jual harus mendapatkan untung dari total harga beli.');
-                } else {
-                    Pembelian::create([
-                        'id' => $data['id_pembelian'],
-                        'tgl_pembelian' => $data['tgl_pembelian'],
-                        'user_id' => $data['user_id']
-                    ]);
-                    if (count($data['id_barang']) > 0) {
-                        foreach ($data['id_barang'] as $key => $value) {
-                            $multipleData = array(
-                                'id_pembelian' => $data['id_pembelian'],
-                                'id_barang' => $data['id_barang'][$key],
-                                'jumlah_pembelian' => $data['jumlah_pembelian'][$key],
-                                'harga_beli' => $data['harga_beli'][$key],
-                                'harga_jual' => $data['harga_jual'][$key],
-                                'id_supplier' => $data['id_supplier'][$key]
-                            );
-                            $refreshstok = Barang::find($data['id_barang'][$key])->stok + $data['jumlah_pembelian'][$key];
-                            DetailPembelian::create($multipleData);
-                            Barang::find($data['id_barang'][$key])->update(['stok' => $refreshstok]);
-                        }
-                    }
-
-                    return Redirect::route('pembelian-activity.index')->with('message', 'Pembelian baru berhasil ditambahkan.');
+                $hargaJual = $data['harga_jual'][$inx];
+                $hargaBeli = $data['harga_beli'][$inx];
+                if ($hargaJual < $hargaBeli) {
+                    $isUntung = false;
+                    break;
                 }
+            }
+            if ($isUntung) {
+                Pembelian::create([
+                    'id' => $data['id_pembelian'],
+                    'tgl_pembelian' => $data['tgl_pembelian'],
+                    'user_id' => $data['user_id']
+                ]);
+                if (count($data['id_barang']) > 0) {
+                    foreach ($data['id_barang'] as $key => $value) {
+                        $multipleData = array(
+                            'id_pembelian' => $data['id_pembelian'],
+                            'id_barang' => $data['id_barang'][$key],
+                            'jumlah_pembelian' => $data['jumlah_pembelian'][$key],
+                            'harga_beli' => $data['harga_beli'][$key],
+                            'harga_jual' => $data['harga_jual'][$key],
+                            'id_supplier' => $data['id_supplier'][$key]
+                        );
+                        $refreshstok = Barang::find($data['id_barang'][$key])->stok + $data['jumlah_pembelian'][$key];
+                        DetailPembelian::create($multipleData);
+                        LaporanPembelian::create($multipleData);
+                        Barang::find($data['id_barang'][$key])->update(['stok' => $refreshstok]);
+                    }
+                }
+
+                return Redirect::route('pembelian-activity.index')->with('message', 'Pembelian baru berhasil ditambahkan.');
+            } else {
+                return Redirect::route('pembelian-activity.create')->with('error', 'Harga jual harus mendapatkan untung dari total harga beli.');
             }
         }
     }
