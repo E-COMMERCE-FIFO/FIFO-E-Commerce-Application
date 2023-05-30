@@ -28,9 +28,6 @@
                            </div>
                            <div class="ps-3">
                               <h6>Rp{{ $totalpemasukan }}</h6>
-                              <a href="{{ url('penjualan') }}">
-                                 <span class="text-success small pt-1 fw-bold">Lihat data</span>
-                              </a>
                            </div>
                         </div>
                      </div>
@@ -47,9 +44,6 @@
                            </div>
                            <div class="ps-3">
                               <h6>Rp{{ $totalpengeluaran }}</h6>
-                              <a href="{{ url('penjualan') }}">
-                                 <span class="small pt-1 fw-bold" style="color: rgb(244, 161, 5);">Lihat data</span>
-                              </a>
                            </div>
                         </div>
                      </div>

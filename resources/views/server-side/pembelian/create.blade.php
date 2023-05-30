@@ -74,7 +74,7 @@
                             <select name="id_barang[]" id="id_barang" class="form-select" required>
                               <option value="" id="barangtest">~ pilih barang ~</option>
                               @forelse ($barang as $itemB)
-                                <option value="{{ $itemB['id'] }}">{{ $itemB['nama_barang'] }}</option>
+                                <option value="{{ $itemB['id'] }}">{{ $itemB['nama_barang'] }} - Sisa Stok {{ $itemB['stok'] }}</option>
                               @empty
                               <option value="">~ belum ada data barang ~</option>
                                 <script>
@@ -196,7 +196,7 @@
         <select name="id_barang[]" id="id_barang" class="form-select" required>
           <option value="" id="barangtest">~ pilih barang ~</option>
           @forelse ($barang as $itemB)
-            <option value="{{ $itemB['id'] }}">{{ $itemB['nama_barang'] }}</option>
+            <option value="{{ $itemB['id'] }}">{{ $itemB['nama_barang'] }} - Sisa Stok {{ $itemB['stok'] }}</option>
           @empty
             <option value="">~ belum ada data barang ~</option>
           @endforelse

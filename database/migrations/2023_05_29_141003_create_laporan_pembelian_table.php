@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id_laporan_pembelian');
             $table->foreignId('id_pembelian')->constrained('pembelian');
             $table->foreignId('id_barang')->constrained('barang');
+            $table->integer('sisa_stok');
             $table->integer('jumlah_pembelian');
             $table->integer('harga_beli');
             $table->integer('harga_jual');

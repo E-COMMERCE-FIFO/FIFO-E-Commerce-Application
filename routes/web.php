@@ -78,6 +78,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('laporan-pembelian', [PembelianController::class, 'laporanPembelian'])->name('laporan.barang-masuk');
         Route::get('laporan-penjualan', [PembelianController::class, 'laporanPenjualan'])->name('laporan.barang-keluar');
+        Route::get('laporan-stock', [PembelianController::class, 'laporanStock'])->name('laporan.perhitungan-stock');
     });
 
     

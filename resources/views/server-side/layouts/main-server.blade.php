@@ -152,6 +152,11 @@
                      <i class="bi bi-circle"></i><span>Barang Keluar</span>
                   </a>
                </li>
+               <li>
+                  <a href="{{ route('laporan.perhitungan-stock') }}">
+                     <i class="bi bi-circle"></i><span>Perhitungan Stok</span>
+                  </a>
+               </li>
             </ul>
          </li>
          <li class="nav-heading mb-2 mt-4">Lain-lain</li>
