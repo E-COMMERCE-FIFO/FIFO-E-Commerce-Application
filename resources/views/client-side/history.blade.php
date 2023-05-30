@@ -48,13 +48,14 @@
           <p class="badge bg-primary">{{ $item->status }}<p>         
         </td>
         @endif
-        <td> 
+        <td>       
           <form action="/delete/{{ $item->id }}"  method="post">
           @method('delete')
           @csrf
           <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-      </form>
+          </form>
       </td>
+
       </tr>
        @endforeach     
     </tbody>

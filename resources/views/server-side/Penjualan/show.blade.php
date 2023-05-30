@@ -50,11 +50,7 @@
                                         <form action="{{  url('keterangan/'. $data->id) }}" class="d-flex gap-2" method="post" id="keteranganForm">
                                         @csrf
                                         @method('PUT')
-                                        <select name="keterangan" id="" class="form-select">
-                                            <option value="">~ Pilih Keterangan ~</option>
-                                            <option value="Mohon maaf stok Habis!">~ Mohon maaf stok habis! ~</option>
-                                            <option value="Bukti transfer tidak valid!">~ Bukti transfer tidak valid! ~ </option>
-                                        </select>
+                                        <input type="textarea" name="keterangan" value="{{ $data->keterangan }}" autocomplete="off">
                                         <button type="submit" class="btn btn-success" id="submitButton"><i class="bi bi-send"></i></button>
                                         </form>
                                         @elseif($data->bukti_pembayaran == '')
