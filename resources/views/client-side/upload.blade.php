@@ -22,7 +22,7 @@
     <form action="/upload/bukti/{{ $penjualan->id }}"  method="post" autocomplete="off" enctype="multipart/form-data">
         @method('put')
         @csrf
-    <input type="hidden" class="form-control mb-3" name="keterangan" value="-" readonly/>
+    <input type="hidden" class="form-control mb-3" name="keterangan" value="Menunggu Admin periksa bukti pembayaran" readonly/>
     <input type="hidden" class="form-control mb-3" name="status" value="Pending">
     <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" class="form-control mb-3"/>
     <input type="submit" value="Bayar Sekarang" class="btn btn-primary">

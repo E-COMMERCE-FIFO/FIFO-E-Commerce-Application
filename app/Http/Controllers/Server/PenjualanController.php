@@ -167,7 +167,7 @@ class PenjualanController extends Controller
         }
     
         $penjualan->status = $request->input('status');
-
+        $penjualan->keterangan = $request->input('keterangan');
         $penjualan->save();
         return redirect()->back()->with('success');
     }

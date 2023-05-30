@@ -24,12 +24,7 @@
         <td>{{ $item->nama_barang }}</td>
         <td>{{ $item->qty }}</td>
         <td>{{ $item->jumlah_bayar }}</td>
-
-        @if ($item->status == 'Gagal' )
         <td>{{ $item->keterangan }}</td>
-        @else
-        <td>-</td>
-        @endif
 
         @if($item->status == 'Sukses' )
         <td>
