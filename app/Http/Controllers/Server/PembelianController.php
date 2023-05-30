@@ -139,4 +139,19 @@ class PembelianController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Pembelian  $pembelian
+     * @return \Illuminate\Http\Response
+     */
+    public function laporanPembelian()
+    {
+        return view('server-side.laporan.laporan-pembelian');
+    }
+    public function laporanPenjualan()
+    {
+        return view('server-side.laporan.laporan-penjualan');
+    }
 }

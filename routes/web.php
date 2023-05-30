@@ -46,32 +46,36 @@ Route::get('/form', [DashboardController::class, 'form']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // ! ROUTE SERVER SIDE
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::resource('/kategori-activity', KategoriController::class)->parameters([
-        'kategori-activity' => 'kategori'
-    ]);
-    Route::resource('/barang-activity', BarangController::class)->parameters([
-        'barang-activity' => 'barang'
-    ]);
-    Route::resource('/pembelian-activity', PembelianController::class)->parameters([
-        'pembelian-activity' => 'pembelian'
-    ]);
-    Route::resource('/pengguna-activity', PenggunaController::class)->parameters([
-        'pengguna-activity' => 'pengguna'
-    ]);
-    
-    Route::get('/data-pelanggan', [PenggunaController::class, 'customer']);
-    Route::get('/supplier', [SupplierController::class, 'index']);
-    Route::get('/createsupplier', [SupplierController::class, 'create']);
-    Route::post('/add', [SupplierController::class, 'store']);
-    Route::get('/{id}/edit', [SupplierController::class, 'edit']);
-    Route::put('/{id}', [SupplierController::class, 'update']);
-    Route::delete('/{id}', [SupplierController::class, 'destroy']);
-    Route::get('/penjualan', [ServerPenjualanController::class, 'index']);
-    Route::delete('/penjualan/{id}', [ServerPenjualanController::class, 'destroy']);
-    Route::get('/{id}/detail', [ServerPenjualanController::class, 'show']);
-    Route::put('penjualan/update/{id}', [PenjualanController::class, 'updateStatus']);
+    Route::middleware('admin')->group(function() {
+        Route::get('/dashboard', [DashboardController::class, 'index']);
+        Route::resource('/kategori-activity', KategoriController::class)->parameters([
+            'kategori-activity' => 'kategori'
+        ]);
+        Route::resource('/barang-activity', BarangController::class)->parameters([
+            'barang-activity' => 'barang'
+        ]);
+        Route::resource('/pembelian-activity', PembelianController::class)->parameters([
+            'pembelian-activity' => 'pembelian'
+        ]);
+        Route::resource('/pengguna-activity', PenggunaController::class)->parameters([
+            'pengguna-activity' => 'pengguna'
+        ]);
+        
+        Route::get('/data-pelanggan', [PenggunaController::class, 'customer']);
+        Route::get('/supplier', [SupplierController::class, 'index']);
+        Route::get('/createsupplier', [SupplierController::class, 'create']);
+        Route::post('/add', [SupplierController::class, 'store']);
+        Route::get('/{id}/edit', [SupplierController::class, 'edit']);
+        Route::put('/{id}', [SupplierController::class, 'update']);
+        Route::delete('/{id}', [SupplierController::class, 'destroy']);
+        Route::get('/penjualan', [ServerPenjualanController::class, 'index']);
+        Route::delete('/penjualan/{id}', [ServerPenjualanController::class, 'destroy']);
+        Route::get('/{id}/detail', [ServerPenjualanController::class, 'show']);
+        Route::put('penjualan/update/{id}', [PenjualanController::class, 'updateStatus']);
 
+        Route::get('laporan-pembelian', [PembelianController::class, 'laporanPembelian'])->name('laporan.barang-masuk');
+        Route::get('laporan-penjualan', [PembelianController::class, 'laporanPenjualan'])->name('laporan.barang-keluar');
+    });
 
     
     // ? ROUTE BREEZE 

@@ -143,12 +143,12 @@
             </a>
             <ul id="cetak-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('laporan.barang-masuk') }}">
                      <i class="bi bi-circle"></i><span>Barang Masuk</span>
                   </a>
                </li>
                <li>
-                  <a href="{{ url('dashboard') }}">
+                  <a href="{{ route('laporan.barang-keluar') }}">
                      <i class="bi bi-circle"></i><span>Barang Keluar</span>
                   </a>
                </li>
