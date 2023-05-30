@@ -12,8 +12,8 @@
         <th scope="col">Produk</th>
         <th scope="col">Jumlah Beli</th>
         <th scope="col">Total Bayar</th>
-        <th scope="col">Status</th>
-
+        <th scope="col">Keterangan</th>
+        <th scope="col">Status</th>     
       </tr>
     </thead>
     <tbody>
@@ -23,9 +23,18 @@
         <td>{{ $item->nama_barang }}</td>
         <td>{{ $item->qty }}</td>
         <td>{{ $item->jumlah_bayar }}</td>
+        @if ($item->status == 'Gagal' )
+        <td>{{ $item->keterangan }}</td>
+        @else
+        <td>-</td>
+        @endif
         @if($item->status == 'Sukses' )
         <td>
           <p class="badge bg-success">{{ $item->status }}<p>     
+        </td>
+        @elseif($item->status == 'Gagal')
+        <td>
+          <p class="badge bg-danger">{{ $item->status }}<p>
         </td>
         @elseif($item->bukti_pembayaran == '')
         <td class="d-flex  justify-content-center align-content-center gap-2">

@@ -22,6 +22,7 @@
                         <input type="number" class="form-control" name="qty" value="1" min="1" max="{{ $barang->stok }}" readonly>
                         <button class="btn btn-outline-secondary" type="button" id="btn-plus">+</button>
                     </div>
+                    <input type="hidden" class="form-control mb-3" name="harga" value="{{ $jual->harga_jual }}">
                     <label for="pembeli" class="form-label">*Total Bayar</label>
                     <input type="number" class="form-control mb-3" name="jumlah_bayar" id="jmlBayar" value="{{ $jual->harga_jual }}" readonly/>
                     <div class="col-md-6">

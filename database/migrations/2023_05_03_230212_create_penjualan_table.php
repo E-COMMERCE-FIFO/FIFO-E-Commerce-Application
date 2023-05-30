@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->date('tanggal_penjualan');
-            $table->integer('jumlah_bayar');
+            $table->integer('harga');
             $table->integer('qty');
+            $table->integer('jumlah_bayar');
             $table->foreignId('id_barang')->constrained('barang');
             $table->string('bukti_pembayaran')->nullable();
+            $table->string('keterangan')->nullable();
             $table->string('status')->default('Menunggu Pembayaran');
             $table->timestamps();
         });

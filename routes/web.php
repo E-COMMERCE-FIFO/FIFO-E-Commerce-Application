@@ -38,6 +38,9 @@ Route::get('/list-barang/{id_kategori}', [PenjualanController::class, 'showDetai
 Route::put('/upload/bukti/{id}', [PenjualanController::class, 'uploadBukti'])->name('uploadBukti');
 Route::delete('/delete/{id}', [PenjualanController::class, 'destroy'])->name('delete');
 Route::put('/penjualan/update/{id}', [PenjualanController::class, 'updateStatus'])->name('updateStatus');
+Route::put('/penjualan/updates/{id}', [PenjualanController::class, 'statusGagal'])->name('statusGagal');
+Route::put('/keterangan/{id}', [PenjualanController::class, 'keterangan'])->name('keterangan');
+
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
 

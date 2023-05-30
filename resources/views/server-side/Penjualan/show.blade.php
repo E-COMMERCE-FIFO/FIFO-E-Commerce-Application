@@ -42,24 +42,40 @@
                             <tr>
                                 <th scope="col">Status Pembelian</th>                    
                                 <td class="col-md-8">
-                                    <div class="d-flex justify-content-md-between">
+                                    <div class="d-flex justify-content-md-between gap-2">
                                         @if($data->status == 'Sukses')
-                                        <p class="badge bg-success mt-2">{{ $data->status }}<p>
+                                        <p class="badge bg-success mt-2">{{ $data->status }}</p>
+                                        @elseif($data->status == 'Gagal')
+                                        <p class="badge bg-danger mt-2">{{ $data->status }}</p>
+                                        <form action="{{  url('keterangan/'. $data->id) }}" class="d-flex gap-2" method="post" id="keteranganForm">
+                                        @csrf
+                                        @method('PUT')
+                                        <select name="keterangan" id="" class="form-select">
+                                            <option value="">~ Pilih Keterangan ~</option>
+                                            <option value="Mohon maaf stok Habis!">~ Mohon maaf stok habis! ~</option>
+                                            <option value="Bukti transfer tidak valid!">~ Bukti transfer tidak valid! ~ </option>
+                                        </select>
+                                        <button type="submit" class="btn btn-success" id="submitButton"><i class="bi bi-send"></i></button>
+                                        </form>
                                         @elseif($data->bukti_pembayaran == '')
-                                            <p class="badge bg-danger">Menunggu Pembayaran<p>
+                                        <p class="badge bg-danger text-center my-2">Menunggu Pembayaran</p>
                                         @else
-                                            <p class="badge bg-primary mt-1">{{ $data->status }}</p>
-                                            <form action="{{ url('penjualan/update/'. $data->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="nama_lengkap" value="{{ $data->nama_lengkap }}">
-                                                <input type="hidden" name="nama_barang" value="{{ $data->nama_barang }}">
-                                                <input type="hidden" name="qty" value="{{ $data->qty }}">
-
-                                                <input type="hidden" name="status" value="Sukses">
-                                                <button type="submit" class="btn btn-success"><i class="bi bi-check-square-fill"></i>
-                                                </button>
-                                            </form>
+                                        <p class="badge bg-primary mt-1">{{ $data->status }}</p>
+                                        <form action="{{ url('penjualan/update/'. $data->id) }}" method="post" >
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="nama_lengkap" value="{{ $data->nama_lengkap }}">
+                                            <input type="hidden" name="nama_barang" value="{{ $data->nama_barang }}">
+                                            <input type="hidden" name="qty" value="{{ $data->qty }}">
+                                            <input type="hidden" name="status" value="Sukses">
+                                            <button type="submit" class="btn btn-success"><i class="bi bi-check-square-fill"></i></button>
+                                        </form>
+                                        <form action="{{ url('penjualan/updates/'. $data->id) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="status" value="Gagal">
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-x"></i></button>
+                                        </form>
                                         @endif
                                     </div>
                                 </td>

@@ -19,7 +19,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body p-4">
-              <form action="{{ route('laporan.barang-masuk') }}" method="GET">
+              <form action="{{ route('laporan.barang-keluar') }}" method="GET">
                 <div class="row">
                   <div class="col-md-4">
                     <label for="tanggal_awal" class="mb-2"><strong>*Tanggal awal</strong></label>
@@ -58,30 +58,30 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">Tanggal Pembelian</th>
-                    <th scope="col">Penanggung Jawab</th>
-                    <th scope="col">Pengaturan</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Nama Pembeli</th>
+                    <th scope="col">Barang</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($getDataLaporan as $item)
                   <tr>
-                    <td>1</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
+                
+                    <td>{{ $numb++ }}</td>
+                    <td>{{ $item->tanggal_penjualan }}</td>
+                    <td>{{ $item->nama_lengkap }}</td>
+                    <td>{{ $item->nama_barang }}</td>
+                    <td>{{ $item->harga }}</td>
+                    <td>{{ $item->qty }}</td>
+                    <td>{{ $item->jumlah_bayar }}</td>
+                    <td>{{ $item->status }}</td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

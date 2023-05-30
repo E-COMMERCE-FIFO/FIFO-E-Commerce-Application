@@ -62,6 +62,8 @@
                @auth
                @if(Auth::user()->role == 'Administrator')
                <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+               <li><a href="{{ url('/logout') }}">logout</a></li>
+
                @else
                <li><a href="{{ route('history') }}">Riwayat Pembelian</a></li>
                <li><a href="{{ url('/logout') }}">logout</a></li>

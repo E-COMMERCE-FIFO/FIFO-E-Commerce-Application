@@ -7,12 +7,14 @@ use App\Models\Barang;
 use App\Models\DetailPembelian;
 use App\Models\Pembelian;
 use App\Models\Supplier;
+use App\Models\Penjualan;
 use App\Http\Requests\StorePembelianRequest;
 use App\Http\Requests\UpdatePembelianRequest;
 use App\Models\LaporanPembelian;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+
 
 
 class PembelianController extends Controller
@@ -160,6 +162,17 @@ class PembelianController extends Controller
     }
     public function laporanPenjualan(Request $request)
     {
-        return view('server-side.laporan.laporan-penjualan');
+        $numb = 1;
+        $tanggalAwal = $request->input('tanggal_awal');
+        $tanggalAkhir = $request->input('tanggal_akhir');
+
+        $getDataLaporan = Penjualan::join('users', 'penjualan.user_id', '=', 'users.id')
+        ->join('barang', 'penjualan.id_barang', '=', 'barang.id')
+        ->select('*')
+        ->whereBetween('tanggal_penjualan', [$tanggalAwal, $tanggalAkhir])
+        ->where('status', 'sukses')
+        ->get();
+
+        return view('server-side.laporan.laporan-penjualan', compact(['numb', 'getDataLaporan']));
     }
 }

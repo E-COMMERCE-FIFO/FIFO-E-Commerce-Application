@@ -172,6 +172,22 @@ class PenjualanController extends Controller
         return redirect()->back()->with('success');
     }
 
+    public function statusGagal(Request $request, $id)
+    {
+        $penjualan = Penjualan::find($id);
+        $penjualan->status = $request->input('status');
+        $penjualan->save();
+        return redirect()->back()->with('success');
+    }
+
+    public function keterangan(Request $request, $id)
+    {
+        $penjualan = Penjualan::find($id);
+        $penjualan->keterangan = $request->input('keterangan');
+        $penjualan->save();
+        return redirect()->back()->with('success');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
