@@ -25,7 +25,7 @@
     <input type="hidden" class="form-control mb-3" name="keterangan" value="-" readonly/>
     <input type="hidden" class="form-control mb-3" name="status" value="Pending">
     <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" class="form-control mb-3"/>
-    <input type="submit" value="Beli Sekarang" class="btn btn-primary">
+    <input type="submit" value="Bayar Sekarang" class="btn btn-primary">
     </form>
     </div>
     </div>

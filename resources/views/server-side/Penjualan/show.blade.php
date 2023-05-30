@@ -47,12 +47,7 @@
                                         <p class="badge bg-success mt-2">{{ $data->status }}</p>
                                         @elseif($data->status == 'Gagal')
                                         <p class="badge bg-danger mt-2">{{ $data->status }}</p>
-                                        <form action="{{  url('keterangan/'. $data->id) }}" class="d-flex gap-2" method="post" id="keteranganForm">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="textarea" name="keterangan" value="{{ $data->keterangan }}" autocomplete="off">
-                                        <button type="submit" class="btn btn-success" id="submitButton"><i class="bi bi-send"></i></button>
-                                        </form>
+                                     
                                         @elseif($data->bukti_pembayaran == '')
                                         <p class="badge bg-danger text-center my-2">Menunggu Pembayaran</p>
                                         @else
@@ -76,6 +71,23 @@
                                     </div>
                                 </td>
                             </tr>
+                            @if($data->status == 'Gagal')
+                            <tr>
+                                <th>Keterangan</th>
+                                <td>
+                                <form action="{{  url('keterangan/'. $data->id) }}" class="d-flex gap-2" method="post" id="keteranganForm">
+                                    @csrf
+                                    @method('PUT')
+                                    <select name="keterangan" id="" class="form-select">
+                                        <option value="">~ Pilih Keterangan ~</option>
+                                        <option value="Mohon maaf, stok habis. Silakan hubungi kami melalui Nomor WhatsApp untuk informasi lebih lanjut dan pengembalian dana. Terima kasih."> Stok Habis! </option>
+                                        <option value="Bukti transfer tidak valid!"> Bukti transfer tidak valid!  </option>
+                                    </select>
+                                    <button type="submit" class="btn btn-success" id="submitButton"><i class="bi bi-send"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endif
                         </table>
                         <div class="mb-4">
                         <h4 class="text-center">Bukti Transfer</h4>

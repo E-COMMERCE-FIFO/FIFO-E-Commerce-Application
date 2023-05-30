@@ -184,7 +184,7 @@ class PenjualanController extends Controller
     {
         $penjualan = Penjualan::find($id);
         $penjualan->keterangan = $request->input('keterangan');
-        $penjualan->save();
+        $penjualan->save();   
         return redirect()->back()->with('success');
     }
 

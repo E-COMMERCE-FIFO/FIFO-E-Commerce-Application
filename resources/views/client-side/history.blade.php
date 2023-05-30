@@ -40,22 +40,31 @@
           <p class="badge bg-danger">{{ $item->status }}<p>
         </td>
         @elseif($item->bukti_pembayaran == '')
-        <td class="d-flex  justify-content-center align-content-center gap-2">
-          <a href="{{ url('/upload/' . $item->id) }}" class="btn btn-danger ">Upload Bukti</a>
-        </td>
+       <td>
+        <p class="badge bg-secondary">{{ $item->status }}</p></td>
         @else
         <td>
           <p class="badge bg-primary">{{ $item->status }}<p>         
         </td>
         @endif
-        <td>       
+        <td> 
+          <div class="d-flex gap-3">
+          @if($item->keterangan == 'Bukti transfer tidak valid!' || $item->status == 'Menunggu Pembayaran') 
+          <a href="{{ url('/upload/' . $item->id) }}" class="btn btn-info "><i class="bi bi-upload"></i></a>
+          <form action="/delete/{{ $item->id }}"  method="post">
+            @method('delete')
+            @csrf
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+          </form>
+        </div>
+          @else
           <form action="/delete/{{ $item->id }}"  method="post">
           @method('delete')
           @csrf
           <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
           </form>
       </td>
-
+        @endif
       </tr>
        @endforeach     
     </tbody>
