@@ -57,30 +57,30 @@
                 <thead>
                   <tr>
                     <th scope="col">#No</th>
-                    <th scope="col">Data Pembelian</th>
-                    <th scope="col">Data Pembelian</th>
-                    <th scope="col">Data Pembelian</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Penanggung Jawab</th>
+                    <th scope="col">Barang</th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Harga Beli</th>
+                    <th scope="col">Harga Jual</th>
+                    <th scope="col">Total Harga</th>
+                    <th scope="col">Supplier</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                    <td>Data Pembelian</td>
-                  </tr>
+                  @foreach ($getDataLaporan as $datas)
+                    <tr>
+                      <td>{{ $numb++ }}</td>
+                      <td>{{ $datas->tgl_pembelian }}</td>
+                      <td>{{ $datas->nama_lengkap }}</td>
+                      <td>{{ $datas->nama_barang }}</td>
+                      <td>{{ $datas->jumlah_pembelian }}</td>
+                      <td>{{ $datas->harga_beli }}</td>
+                      <td>{{ $datas->harga_jual }}</td>
+                      <td>{{ $datas->jumlah_harga }}</td>
+                      <td>{{ $datas->nama_supplier }}</td>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

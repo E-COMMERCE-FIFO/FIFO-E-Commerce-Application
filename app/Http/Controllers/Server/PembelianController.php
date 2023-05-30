@@ -12,6 +12,8 @@ use App\Http\Requests\UpdatePembelianRequest;
 use App\Models\LaporanPembelian;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+
 
 class PembelianController extends Controller
 {
@@ -146,11 +148,17 @@ class PembelianController extends Controller
      * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function laporanPembelian()
+    public function laporanPembelian(Request $request)
     {
-        return view('server-side.laporan.laporan-pembelian');
+        $numb = 1;
+        $tanggalAwal = $request->input('tanggal_awal');
+        $tanggalAkhir = $request->input('tanggal_akhir');
+
+        $getDataLaporan = DetailPembelian::join('pembelian', 'detail_pembelian.id_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'detail_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'detail_pembelian.id_supplier', '=', 'supplier.id')->select('*')->whereBetween('tgl_pembelian', [$tanggalAwal, $tanggalAkhir])->get();
+
+        return view('server-side.laporan.laporan-pembelian', compact(['numb', 'getDataLaporan']));
     }
-    public function laporanPenjualan()
+    public function laporanPenjualan(Request $request)
     {
         return view('server-side.laporan.laporan-penjualan');
     }
