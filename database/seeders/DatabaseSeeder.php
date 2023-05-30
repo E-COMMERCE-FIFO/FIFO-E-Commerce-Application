@@ -46,26 +46,6 @@ class DatabaseSeeder extends Seeder
             'kategori' => 'Motor Cross',
         ]);
 
-        DB::table('barang')->insert([
-            [
-                'foto_barang' => 'LENKA-Minitrail-MC55-5.jpeg',
-                'nama_barang' => 'Motor Cross Mini',
-                'id_kategori' => '1',
-                'stok' => '0'
-            ],
-            [
-                'foto_barang' => 'LENKA-Minitrail-MC55-5.jpeg',
-                'nama_barang' => 'Motor Cross Listrik',
-                'id_kategori' => '1',
-                'stok' => '0'
-            ],
-            [
-                'foto_barang' => 'LENKA-Minitrail-MC55-5.jpeg',
-                'nama_barang' => 'Motor Cross Sakti',
-                'id_kategori' => '1',
-                'stok' => '0'
-            ]
-        ]);
 
         DB::table('users')->insert([
             [
