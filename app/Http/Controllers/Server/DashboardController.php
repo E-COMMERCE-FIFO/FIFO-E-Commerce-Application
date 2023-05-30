@@ -19,7 +19,9 @@ class DashboardController extends Controller
         $totalsupplier = Supplier::count();
         $totalbarang = Barang::count();
         $totalpembelian = DetailPembelian::count();
+        $totalpengeluaran = DetailPembelian::sum('jumlah_harga');
         $totalpenjualan = Penjualan::count();
+        $totalpemasukan = Penjualan::sum('jumlah_bayar');
         
         return view('server-side.dashboard', compact([
             'totaladmin',
@@ -27,7 +29,9 @@ class DashboardController extends Controller
             'totalsupplier',
             'totalbarang',
             'totalpembelian',
-            'totalpenjualan'
+            'totalpengeluaran',
+            'totalpenjualan',
+            'totalpemasukan'
         ]));
     }
 
