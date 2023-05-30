@@ -64,7 +64,8 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        //
+        $getById = Kategori::find($kategori)->first();
+        return view('server-side.kategori.edit', compact('getById'));
     }
 
     /**
@@ -76,7 +77,10 @@ class KategoriController extends Controller
      */
     public function update(UpdateKategoriRequest $request, Kategori $kategori)
     {
-        //
+        $kategoriName = Kategori::find($kategori->id);
+        $kategoriName->kategori = $request->kategori;
+        $kategoriName->save();
+        return Redirect::route('kategori-activity.index')->with('message', 'Data berhasil diubah.');
     }
 
     /**

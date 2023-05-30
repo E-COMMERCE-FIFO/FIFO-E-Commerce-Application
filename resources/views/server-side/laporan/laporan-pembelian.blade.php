@@ -89,6 +89,15 @@
           </div>
 
         </div>
+
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Catatan Perhitungan Barang Masuk</h5>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 

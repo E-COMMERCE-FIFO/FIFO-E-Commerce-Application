@@ -39,7 +39,6 @@
                   <tr>
                     <th scope="col">#No</th>
                     <th scope="col">Nama Kategori</th>
-                    <th scope="col">Nama Kategori</th>
                     <th scope="col">Pengaturan</th>
                   </tr>
                 </thead>
@@ -48,13 +47,8 @@
                     <tr>
                       <th scope="row">{{ $numb++ }}</th>
                       <td>{{ $item->kategori }}</td>
-                      <td>{{ $item->id }}</td>
                       <td>
-                        <form action="{{ route('kategori-activity.destroy', $item->id) }}" method="post">
-                          @csrf
-                          @method('delete')
-                          <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus kategori ini?')">hapus</button>
-                        </form>
+                        <a href="{{ route('kategori-activity.edit', $item->id) }}" class="badge bg-warning border-0">edit</a>
                       </td>
                     </tr>
                   @empty
