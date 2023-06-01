@@ -11,6 +11,7 @@ use App\Models\Penjualan;
 use App\Http\Requests\StorePembelianRequest;
 use App\Http\Requests\UpdatePembelianRequest;
 use App\Models\LaporanPembelian;
+use App\Models\StokPembelian;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -98,6 +99,19 @@ class PembelianController extends Controller
                         DetailPembelian::create($multipleData);
                         LaporanPembelian::create($multipleDataLaporan);
                         Barang::find($data['id_barang'][$key])->update(['stok' => $refreshstok]);
+                    }
+
+                    $testing = DetailPembelian::select('id_detail_pembelian', 'jumlah_pembelian', 'id_barang')->where('id_pembelian', $data['id_pembelian'])->get();
+
+                    foreach ($testing as $keystok) {
+                        $jumlah_pembelian = $keystok->jumlah_pembelian;
+                        for ($index = 0; $index < $jumlah_pembelian; $index++) {
+                            $multipleStokPembelian = array(
+                                'kode_barang' => StokPembelian::GenerateKodeBarang() . $keystok->id_barang,
+                                'id_detail_pembelian' => $keystok->id_detail_pembelian
+                            );
+                            StokPembelian::create($multipleStokPembelian);
+                        }
                     }
                 }
 
