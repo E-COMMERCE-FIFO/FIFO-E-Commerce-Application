@@ -10,7 +10,7 @@
                <div class="carousel-container">
                   <div class="carousel-content">
                      <h2 class="animate__animated animate__fadeInDown">Selamat Datang di Toko <span>Roket Mini Moto</span></h2>
-                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, error voluptatum molestiae perspiciatis at nisi minima voluptates, quos dolore perferendis autem sunt aliquam commodi voluptas consequuntur aspernatur, dolorum eaque!</p>
+                     <p class="animate__animated animate__fadeInUp">Toko roket mini moto merupakan toko yang menjual berbagai macam trail mini. Toko roket mini moto juga menjual trail mini bergaransi terlengkap, mobil aki bergaransi terlengkap dan juga sepeda listrik bergaransi.</p>
                      <a href="{{ url('/register') }}" class="btn-get-started animate__animated animate__fadeInUp">Daftar</a>
                   </div>
                </div>
@@ -19,7 +19,7 @@
                <div class="carousel-container">
                   <div class="carousel-content">
                      <h2 class="animate__animated fanimate__adeInDown">Melayani <span>Sepenuh Hati</span></h2>
-                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, error voluptatum molestiae perspiciatis at nisi minima voluptates, quos dolore perferendis autem sunt aliquam commodi voluptas consequuntur aspernatur, dolorum eaque!</p>
+                     <p class="animate__animated animate__fadeInUp">Kami memahami betapa berharganya waktu dan kepercayaan Anda sebagai pelanggan, dan itulah mengapa kami berusaha untuk memberikan pengalaman berbelanja yang tak terlupakan. Setiap langkah dalam perjalanan Anda di toko kami diisi dengan kesempurnaan dan profesionalisme.</p>
                      <a href="#services" class="btn-get-started animate__animated animate__fadeInUp">Lihat Produk</a>
                   </div>
                </div>
@@ -28,7 +28,7 @@
                <div class="carousel-container">
                   <div class="carousel-content">
                      <h2 class="animate__animated animate__fadeInDown">Harga <span>Terjangkau</span>, Kualitas <span>Terjamin</span></h2>
-                     <p class="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, error voluptatum molestiae perspiciatis at nisi minima voluptates, quos dolore perferendis autem sunt aliquam commodi voluptas consequuntur aspernatur, dolorum eaque!</p>
+                     <p class="animate__animated animate__fadeInUp">Kami bangga memberikan pilihan produk berkualitas tinggi dengan harga yang dapat dijangkau oleh semua orang. Kami berkomitmen untuk memberikan pengalaman berbelanja yang memuaskan dengan pilihan produk yang istimewa dan harga yang terjangkau.</p>
                      <a href="#services" class="btn-get-started animate__animated animate__fadeInUp">Beli Sekarang</a>
                   </div>
                </div>

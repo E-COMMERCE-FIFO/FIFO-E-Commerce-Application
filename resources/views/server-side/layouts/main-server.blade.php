@@ -117,6 +117,11 @@
                      <i class="bi bi-circle"></i><span>Data Barang</span>
                   </a>
                </li>
+               <li>
+                  <a href="{{ route('barang.persediaan-stok') }}">
+                     <i class="bi bi-circle"></i><span>Persediaan Barang</span>
+                  </a>
+               </li>
             </ul>
          </li>
          <li class="nav-item">

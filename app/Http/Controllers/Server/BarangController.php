@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Models\Kategori;
+use App\Models\StokPembelian;
 use Illuminate\Support\Facades\Redirect;
 
 class BarangController extends Controller
@@ -96,5 +97,19 @@ class BarangController extends Controller
     {
         Barang::find($barang->id)->delete();
         return Redirect::route('barang-activity.index')->with('message', 'Data berhasil dihapus.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Barang  $barang
+     * @return \Illuminate\Http\Response
+     */
+    public function persediaanBarang()
+    {
+        $numb = 1;
+        $barang = StokPembelian::all();
+        $barang1 = StokPembelian::join('detail_pembelian', 'detail_pembelian.id_detail_pembelian', '=', 'stok_pembelian.id_detail_pembelian')->join('barang', 'barang.id', '=', 'detail_pembelian.id_barang')->join('pembelian', 'pembelian.id', '=', 'detail_pembelian.id_pembelian')->get();
+        return view('server-side.barang.persediaan-barang', compact('numb', 'barang1'));
     }
 }

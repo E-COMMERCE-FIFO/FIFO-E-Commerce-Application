@@ -9,6 +9,7 @@ class StokPembelian extends Model
 {
     use HasFactory;
     protected $table = 'stok_pembelian';
+    protected $keyType = 'string';
     protected $primaryKey = 'kode_barang';
     protected $fillable = ['kode_barang', 'id_detail_pembelian', 'status_stok'];
 

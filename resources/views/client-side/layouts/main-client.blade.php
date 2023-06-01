@@ -28,13 +28,13 @@
                <a href="mailto:contact@example.com">Kel. Blindungan, Bondowoso, Jawa Timur 68212</a>
             </i>
             <i class="bi bi-alarm d-flex align-items-center ms-4"><span>09.00 - 22.00</span></i>
-            <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 877-5917-4130</span></i>
+            <i class="bi bi-phone d-flex align-items-center ms-4"><span>085231290000</span></i>
          </div>
          <div class="social-links d-none d-md-flex align-items-center">
-            <a href="#" class="twitter"><i class="bi bi-link-45deg"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-whatsapp"></i></a>
+            <a href="/beranda" class="twitter"><i class="bi bi-link-45deg"></i></a>
+            <a href="https://www.facebook.com/ika.kurniawan.7792?mibextid=ZbWKwL" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/roket_mini_moto?igshid=MzRlODBiNWFlZA==" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send/?phone=6285231290000&text&type=phone_number&app_absent=0" class="instagram" target="_blank"><i class="bi bi-whatsapp"></i></a>
          </div>
       </div>
    </section>
@@ -90,7 +90,6 @@
                      <li><i class="bx bx-chevron-right"></i> <a href="#">Beranda</a></li>
                      <li><i class="bx bx-chevron-right"></i> <a href="#">Katalog Produk</a></li>
                      <li><i class="bx bx-chevron-right"></i> <a href="#">Cara Belanja</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Riwayat Pembelian</a></li>
                      <li><i class="bx bx-chevron-right"></i> <a href="#">Masuk/Daftar</a></li>
                   </ul>
                </div>
@@ -116,10 +115,9 @@
                   <h4>Temukan Kami</h4>
                   <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.852142353829!2d113.8222771143778!3d-7.910510280922554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dd215e465253%3A0xfc06574f8da1604d!2sGrosir%20Roket%20Mini%20Moto%20Bondowoso!5e0!3m2!1sid!2sid!4v1680979283405!5m2!1sid!2sid" width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
                   <div class="social-links mt-3">
-                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                     <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                     <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                     <a href="#" class="instagram"><i class="bx bxl-whatsapp"></i></a>
+                     <a href="https://www.facebook.com/ika.kurniawan.7792?mibextid=ZbWKwL" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                     <a href="https://instagram.com/roket_mini_moto?igshid=MzRlODBiNWFlZA==" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                     <a href="https://api.whatsapp.com/send/?phone=6285231290000&text&type=phone_number&app_absent=0" class="instagram" target="_blank"><i class="bx bxl-whatsapp"></i></a>
                   </div>
                </div>
             </div>
