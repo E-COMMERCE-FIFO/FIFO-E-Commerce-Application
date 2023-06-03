@@ -96,11 +96,14 @@
                <div class="col-lg-3 col-md-6 footer-links">
                   <h4>Daftar Produk</h4>
                   <ul>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Moto Trail Mini</a></li>
+                     @foreach (App\Models\Kategori::all() as $item)
+                     <li>
+                        <i class="bx bx-chevron-right"></i>
+                        <a href="{{ route('kategori-barang-activity', $item->kategori) }}">
+                           {{ $item->kategori }}
+                        </a>
+                     </li>
+                  @endforeach
                   </ul>
                </div>
                <div class="col-lg-3 col-md-6 footer-contact">
