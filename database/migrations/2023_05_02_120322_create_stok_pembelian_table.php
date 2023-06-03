@@ -21,6 +21,7 @@ return new class extends Migration
             ->on('detail_pembelian')
             ->onDelete('cascade');
             $table->string('status_stok')->default('barang masuk');
+            $table->unsignedBigInteger('id_barang')->index();
             $table->timestamps();
         });
     }

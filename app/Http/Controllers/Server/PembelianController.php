@@ -108,7 +108,8 @@ class PembelianController extends Controller
                         for ($index = 0; $index < $jumlah_pembelian; $index++) {
                             $multipleStokPembelian = array(
                                 'kode_barang' => StokPembelian::GenerateKodeBarang() . $keystok->id_barang,
-                                'id_detail_pembelian' => $keystok->id_detail_pembelian
+                                'id_detail_pembelian' => $keystok->id_detail_pembelian,
+                                'id_barang' => $keystok->id_barang,
                             );
                             StokPembelian::create($multipleStokPembelian);
                         }

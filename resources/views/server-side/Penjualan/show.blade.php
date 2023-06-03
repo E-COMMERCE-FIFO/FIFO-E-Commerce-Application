@@ -46,8 +46,7 @@
                                         @if($data->status == 'Sukses')
                                         <p class="badge bg-success mt-2">{{ $data->status }}</p>
                                         @elseif($data->status == 'Gagal')
-                                        <p class="badge bg-danger mt-2">{{ $data->status }}</p>
-                                     
+                                        <p class="badge bg-danger mt-2">{{ $data->status }}</p>    
                                         @elseif($data->bukti_pembayaran == '')
                                         <p class="badge bg-danger text-center my-2">Menunggu Pembayaran</p>
                                         @else

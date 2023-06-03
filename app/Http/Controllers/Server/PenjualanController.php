@@ -12,6 +12,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\StokPembelian;
 
 class PenjualanController extends Controller
 {
@@ -125,7 +126,6 @@ class PenjualanController extends Controller
         return view('client-side.penjualan', compact('barang','user','jual'))->with($data);
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -133,6 +133,7 @@ class PenjualanController extends Controller
      * @param  \App\Models\Penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
+
     public function updateStatus(Request $request, $id)
     {
         $penjualan = Penjualan::find($id);
@@ -169,6 +170,15 @@ class PenjualanController extends Controller
         $penjualan->status = $request->input('status');
         $penjualan->keterangan = $request->input('keterangan');
         $penjualan->save();
+
+        $kodeBarangs = StokPembelian::where('id_barang', $penjualan->id_barang)
+        ->where('status_stok', '!=', 'Barang Keluar')
+        ->take($penjualan->qty)
+        ->get();
+
+        foreach ($kodeBarangs as $kodeBarang) {
+            $kodeBarang->update(['status_stok' => 'Barang Keluar']);
+        }
         return redirect()->back()->with('success');
     }
 
