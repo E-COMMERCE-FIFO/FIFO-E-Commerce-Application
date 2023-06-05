@@ -11,7 +11,12 @@
                   <div class="carousel-content">
                      <h2 class="animate__animated animate__fadeInDown">Selamat Datang di Toko <span>Roket Mini Moto</span></h2>
                      <p class="animate__animated animate__fadeInUp">Toko roket mini moto merupakan toko yang menjual berbagai macam trail mini. Toko roket mini moto juga menjual trail mini bergaransi terlengkap, mobil aki bergaransi terlengkap dan juga sepeda listrik bergaransi.</p>
-                     <a href="{{ url('/register') }}" class="btn-get-started animate__animated animate__fadeInUp">Daftar</a>
+                     @auth
+
+                        @else
+                        <a href="{{ url('/register') }}" class="btn-get-started animate__animated animate__fadeInUp">Daftar</a>
+                     @endauth
+                    
                   </div>
                </div>
             </div>

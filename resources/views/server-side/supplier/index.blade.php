@@ -1,5 +1,5 @@
 @extends('server-side.layouts.main-server')
-@section('title', 'Data Barang')
+@section('title', 'Data Supplier')
 @section('main-content')
 <main id="main" class="main">
     <div class="pagetitle">

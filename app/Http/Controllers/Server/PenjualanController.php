@@ -227,4 +227,10 @@ class PenjualanController extends Controller
         ->where('kategori', $id_kategori)->get();
         return view('client-side.kategori-barang', compact('getBarangByKategori'))->with($data);
     }
+    
+    public function carabelanja()
+    {
+        $data = ['time' => date('h:i a')];
+        return view('client-side.cara-belanja')->with($data);
+    }
 }

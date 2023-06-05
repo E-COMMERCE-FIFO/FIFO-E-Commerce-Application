@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $totalpembelian = DetailPembelian::count();
         $totalpengeluaran = DetailPembelian::sum('jumlah_harga');
         $totalpenjualan = Penjualan::count();
-        $totalpemasukan = Penjualan::sum('jumlah_bayar');
+        $totalpemasukan = Penjualan::where('status', 'Sukses')->sum('jumlah_bayar');
         
         return view('server-side.dashboard', compact([
             'totaladmin',

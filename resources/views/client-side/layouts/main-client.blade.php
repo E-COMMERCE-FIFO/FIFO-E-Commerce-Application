@@ -57,7 +57,7 @@
                      @endforeach
                   </ul>
                </li>
-               <li><a href="{{ route('beranda') }}">Cara Belanja</a></li>
+               <li><a href="{{ route('cara-belanja') }}">Cara Belanja</a></li>
             
                @auth
                @if(Auth::user()->role == 'Administrator')
@@ -87,10 +87,19 @@
                <div class="col-lg-3 col-md-6 footer-links">
                   <h4>Daftar Halaman</h4>
                   <ul>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Beranda</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Katalog Produk</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Cara Belanja</a></li>
-                     <li><i class="bx bx-chevron-right"></i> <a href="#">Masuk/Daftar</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="{{ route('beranda') }}">Beranda</a></li>
+                     <li><i class="bx bx-chevron-right"></i> <a href="{{ route('cara-belanja') }}">Cara Belanja</a></li>
+                     
+                     @auth
+                     @if(Auth::user()->role == 'Administrator')
+                     <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                     @else
+                     <li><i class="bx bx-chevron-right"></i> <a href="{{ route('history') }}">Riwayat Pembelian</a></li>
+                     @endif
+                     @else 
+                     <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/login') }}">Masuk/Daftar</a></li>
+
+                     @endauth
                   </ul>
                </div>
                <div class="col-lg-3 col-md-6 footer-links">
@@ -110,8 +119,7 @@
                   <h4>Tentang Kami</h4>
                   <p>
                      Utara hotel baru, Jl. Ra. Kartini No.41, Pegadaian, Blindungan, Kec. Bondowoso, Kabupaten Bondowoso, Jawa Timur 68212 <br><br>
-                     <strong>Phone:</strong> +1 5589 55488 55<br>
-                     <strong>Email:</strong> info@example.com<br>
+                     <strong>Phone:</strong> +62 852-3129-0000<br>
                   </p>
                </div>
                <div class="col-lg-3 col-md-6 footer-info">

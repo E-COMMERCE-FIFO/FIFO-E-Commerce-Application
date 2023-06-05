@@ -40,6 +40,7 @@ Route::delete('/delete/{id}', [PenjualanController::class, 'destroy'])->name('de
 Route::put('/penjualan/update/{id}', [PenjualanController::class, 'updateStatus'])->name('updateStatus');
 Route::put('/penjualan/updates/{id}', [PenjualanController::class, 'statusGagal'])->name('statusGagal');
 Route::put('/keterangan/{id}', [PenjualanController::class, 'keterangan'])->name('keterangan');
+Route::get('cara-belanja', [PenjualanController::class, 'caraBelanja'])->name('cara-belanja');
 
 // ? PREVIEW DATATABLES
 Route::get('/datatables', [DashboardController::class, 'datatables']);
