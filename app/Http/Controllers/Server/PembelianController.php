@@ -182,7 +182,7 @@ class PembelianController extends Controller
         $tanggalAwal = $request->input('tanggal_awal');
         $tanggalAkhir = $request->input('tanggal_akhir');
 
-        $getDataLaporan = LaporanPembelian::join('pembelian', 'laporan_pembelian.id_laporan_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'laporan_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'laporan_pembelian.id_supplier', '=', 'supplier.id')->select('*')->whereBetween('tgl_pembelian', [$tanggalAwal, $tanggalAkhir])->get();
+        $getDataLaporan = LaporanPembelian::join('pembelian', 'laporan_pembelian.id_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'laporan_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'laporan_pembelian.id_supplier', '=', 'supplier.id')->select('*')->whereBetween('tgl_pembelian', [$tanggalAwal, $tanggalAkhir])->get();
 
         return view('server-side.laporan.laporan-pembelian', compact(['numb', 'getDataLaporan']));
     }
@@ -209,9 +209,9 @@ class PembelianController extends Controller
         $numbp = 1;
         $dataBarang = Barang::all();
         $item = $request->input('item');
-        $getDataLaporan = LaporanPembelian::join('pembelian', 'laporan_pembelian.id_laporan_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'laporan_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'laporan_pembelian.id_supplier', '=', 'supplier.id')->select('*')->where('id_barang', $item)->get();
+        $getDataLaporan = LaporanPembelian::join('pembelian', 'laporan_pembelian.id_pembelian', '=', 'pembelian.id')->join('barang', 'laporan_pembelian.id_barang', '=', 'barang.id')->select('*')->where('id_barang', $item)->get();
         
-        $getDataHitung = LaporanPembelian::join('pembelian', 'laporan_pembelian.id_laporan_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'laporan_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'laporan_pembelian.id_supplier', '=', 'supplier.id')->select('*')->where('id_barang', $item)->orderBy('pembelian.id', 'DESC')->first() ?? '';
+        $getDataHitung = LaporanPembelian::join('pembelian', 'laporan_pembelian.id_pembelian', '=', 'pembelian.id')->join('users', 'pembelian.user_id', '=', 'users.id')->join('barang', 'laporan_pembelian.id_barang', '=', 'barang.id')->join('supplier', 'laporan_pembelian.id_supplier', '=', 'supplier.id')->select('*')->where('id_barang', $item)->orderBy('pembelian.id', 'DESC')->first() ?? '';
         $getDataSisaStok = LaporanPembelian::where('id_barang', '=', $item)->sum('sisa_stok');
         $getDataPenambahanStok = LaporanPembelian::where('id_barang', '=', $item)->sum('jumlah_pembelian');
         $getDataPenjualan = Penjualan::where('id_barang', '=', $item)->sum('qty');
