@@ -40,7 +40,7 @@
                   </strong>
                 @enderror
               </div>
-              <div class="col-12">
+              <div class="col-12" hidden>
                 <label for="inputEmail4" class="form-label"
                     >*Stok</label
                 >

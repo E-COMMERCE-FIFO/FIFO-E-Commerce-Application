@@ -52,11 +52,7 @@
                       <td>{{ $item->nama_barang }}</td>
                       <td>{{ $item->stok }}</td>
                       <td>
-                        <form action="{{ route('barang-activity.destroy', $item->id) }}" method="post">
-                          @csrf
-                          @method('delete')
-                          <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin ingin menghapus barang ini?')">hapus</button>
-                        </form>
+                        <a href="{{ route('barang-activity.edit', $item->id) }}" class="badge bg-warning border-0">edit</a>
                       </td>
                     </tr>
                   @empty
