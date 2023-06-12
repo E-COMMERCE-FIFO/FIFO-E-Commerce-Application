@@ -20,7 +20,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id')->select('*')->get();
+        $barang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id')->select('kategori.kategori', 'barang.*')->get();
         $numb = 1;
         return view('server-side.barang.index', compact(['barang', 'numb']));
     }
