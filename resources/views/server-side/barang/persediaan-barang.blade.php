@@ -38,6 +38,7 @@
                     <th scope="col">Kode Barang</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Tanggal Masuk</th>
+                    <th scope="col">Opsi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,9 @@
                       <td>{{ $item->kode_barang }}</td>
                       <td>{{ $item->nama_barang }}</td>
                       <td>{{ $item->tgl_pembelian }}</td>
+                      <td>
+                        <a href="{{ route('persediaan-barang.detail', $item->kode_barang) }}" class="badge bg-primary border-0">lihat barcode</a>
+                      </td>
                     </tr>
                   @empty
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">

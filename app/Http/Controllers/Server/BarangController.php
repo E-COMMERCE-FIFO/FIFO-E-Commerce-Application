@@ -114,4 +114,12 @@ class BarangController extends Controller
         $barangKeluar = Penjualan::select('updated_at')->where('status', 'Sukses')->get();
         return view('server-side.barang.persediaan-barang', compact('numb', 'barang1', 'barangKeluar'));
     }
+
+    public function persediaanDetail($code) {
+        $getdata = StokPembelian::join('detail_pembelian', 'detail_pembelian.id_detail_pembelian', '=', 'stok_pembelian.id_detail_pembelian')->join('barang', 'barang.id', '=', 'detail_pembelian.id_barang')->where('kode_barang', $code)->first();
+        $generateBarcode = "Kode Barang: " . $getdata->kode_barang . ", Nama Barang: " . $getdata->nama_barang . ", Harga: " . $getdata->harga_jual;
+        return view('server-side.barang.persediaan-detail', compact([
+            'getdata', 'generateBarcode'
+        ]));
+    }
 }

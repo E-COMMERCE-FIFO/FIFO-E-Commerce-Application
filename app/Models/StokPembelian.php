@@ -17,6 +17,6 @@ class StokPembelian extends Model
     {
         $selectMaxId = explode('/', $this->max('kode_barang'));
         $generateNewId = (int) substr($selectMaxId[0], 4) + 1;
-        return 'BRG.' . sprintf("%05s", $generateNewId) . '@IDB';
+        return 'BRG.' . sprintf("%05s", $generateNewId) . '.IDB';
     }
 }
