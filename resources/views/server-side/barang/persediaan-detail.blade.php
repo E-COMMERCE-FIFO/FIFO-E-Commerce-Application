@@ -20,19 +20,11 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-md-6 text-center">
-                  <h5 class="card-title">QRCODE</h5>
-                  <div id="box-qrcode" class="d-flex justify-content-center align-items-center">
-                    {!! DNS2D::getBarcodeHTML($generateBarcode, 'QRCODE') !!}
-                  </div>
-                  {{-- <img src="data:image/png;base64,  {!! DNS1D::getBarcodePNG($generateBarcode, 'C39E') !!}" alt="Barcode {{ $getdata->kode_barang }}" width="100%" height="120px"> --}}
-                  <h5>{{ $getdata->kode_barang }}</h5>
-                  <button id="printButton" class="btn btn-primary w-75">Cetak QR Code</button>
-                </div>
-                <div class="col-md-6 text-center" id="box-barcode">
+                <div class="col-md-12 text-center">
                   <h5 class="card-title">BARCODE</h5>
-                  <img src="data:image/png;base64,  {!! DNS1D::getBarcodePNG($generateBarcode, 'C39E') !!}" alt="Barcode {{ $getdata->kode_barang }}" width="100%" height="120px">
-                  <h5>{{ $getdata->kode_barang }}</h5>
+                  <img src="data:image/png;base64,  {!! DNS1D::getBarcodePNG("Harga ".$getdata->harga_jual, 'C39') !!}" alt="Barcode {{ $getdata->kode_barang }}" width="100%" height="120px">
+                  <h5>{{ $getdata->kode_barang }} - {{ $getdata->nama_barang }}</h5>
+                  <button id="printButton" class="btn btn-primary w-100">Cetak Barcode</button>
                 </div>
               </div>
 
@@ -51,7 +43,6 @@
         document.querySelector('#sidebar').style.display = 'none';
         document.querySelector('.card').setAttribute('class', 'shadow-none');
         document.querySelector('.pagetitle').style.display = 'none';
-        document.querySelector('#box-barcode').style.display = 'none';
         document.querySelector('#printButton').style.display = 'none';
         document.querySelector('#footer').style.display = 'none';
         window.print();
